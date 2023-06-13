@@ -1,5 +1,7 @@
 package fr.ua.iutlens.sae.app;
 
+import java.util.Objects;
+
 public class Eau {
 
     private static int comptId = 0;
@@ -46,4 +48,22 @@ public class Eau {
     public String toString() {
         return "marque : " + marque + ", catégorie : " + catEau + ", prix : " + prix;
     }
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(catEau, identifiant, marque, prix);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Eau other = (Eau) obj;
+		return catEau == other.catEau && identifiant == other.identifiant && Objects.equals(marque, other.marque)
+				&& Double.doubleToLongBits(prix) == Double.doubleToLongBits(other.prix);
+	}
 }

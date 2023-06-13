@@ -1,5 +1,7 @@
 package fr.ua.iutlens.sae.app;
 
+import java.util.Objects;
+
 public class Employe {
     public int compteur;
     private int id;
@@ -64,4 +66,23 @@ public class Employe {
     public String toString(){
         return "Employé n°"+this.id+" Nom : "+this.nom+" Prénom : "+this.prenom+" Contrat : "+this.contrat+" Salaire : "+this.salaire;
     }
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(compteur, contrat, id, nom, prenom, salaire);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Employe other = (Employe) obj;
+		return compteur == other.compteur && contrat == other.contrat && id == other.id
+				&& Objects.equals(nom, other.nom) && Objects.equals(prenom, other.prenom)
+				&& Double.doubleToLongBits(salaire) == Double.doubleToLongBits(other.salaire);
+	}
 }

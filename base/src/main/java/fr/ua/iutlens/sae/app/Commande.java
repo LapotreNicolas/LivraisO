@@ -1,29 +1,55 @@
 package fr.ua.iutlens.sae.app;
 
+import java.util.Objects;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public class Commande implements RemisesPossibles {
-    private static final int MAX_COMMANDES = 100;
-    private LigneDeCommande[] commandes;
+    @Override
+	public int hashCode() {
+		return Objects.hash(commandes);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Commande other = (Commande) obj;
+		return Objects.equals(commandes, other.commandes);
+	}
+
+	private static final int MAX_COMMANDES = 100;
+    private ObservableList<LigneDeCommande> commandes;
     private static int pos;
 
     public Commande() {
-        this.commandes = new LigneDeCommande[MAX_COMMANDES];
+        this.commandes = FXCollections.observableArrayList();
     }
 
     public void ajouterCommande(LigneDeCommande commande) {
-        this.commandes[pos++] = commande;
+        if (this.pos < MAX_COMMANDES) {
+        	this.commandes.add(commande);
+        	pos++;
+        }
     }
 
-    public void ajouterCommandes(LigneDeCommande[] commandes) {
-        if (commandes.length + pos < MAX_COMMANDES) {
+    public void ajouterCommandes(ObservableList<LigneDeCommande> commandes) {
+        if (commandes.size() + pos <= MAX_COMMANDES) {
             for (LigneDeCommande commande : commandes) {
-                this.commandes[pos++] = commande;
+                this.commandes.add(commande);
+                pos++;
             }
         }
     }
 
     public void modifierCommande(int position, LigneDeCommande commande) {
-        if (position<pos) {
-            this.commandes[position]=commande;
+        if (position < pos) {
+        	this.commandes.add(position, commande);
         }
     }
 
@@ -56,8 +82,8 @@ public class Commande implements RemisesPossibles {
 
     public double montantTotal(Client client) {
         double prixTotal = 0;
-        for (int i = 0; i < this.commandes.length; i++) {
-            prixTotal += this.commandes[i].getEau().getPrix() * (this.commandes[i].getQuantite()-nombreBouteillesGratuites(this.commandes[i].getQuantite(),client));
+        for (int i = 0; i < this.commandes.size(); i++) {
+            prixTotal += this.commandes.get(i).getEau().getPrix() * (this.commandes.get(i).getQuantite()-nombreBouteillesGratuites(this.commandes.get(i).getQuantite(),client));
         }
         return prixTotal - (prixTotal*(montantDeLaRemise(client)));
     }
@@ -67,7 +93,7 @@ public class Commande implements RemisesPossibles {
         String informations = "Tableau des Commandes :";
         if (pos == 0) informations += "\n\tpas de commande";
         else {
-            for (int i = 0 ; i < pos ; i++) informations += "\n\t- " + this.commandes[i];
+            for (int i = 0 ; i < pos ; i++) informations += "\n\t- " + this.commandes.get(i);
         }
         return informations;
     }
