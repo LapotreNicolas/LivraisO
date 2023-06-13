@@ -1,7 +1,28 @@
 package fr.ua.iutlens.sae.app;
 
+import java.util.Objects;
+
 public abstract class Client{
-    private static int compteur = 0;
+    @Override
+	public int hashCode() {
+		return Objects.hash(adresse, adresseMail, code, dateInscription, numTelephone, ptsFidelite, resteAchatFidel);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Client other = (Client) obj;
+		return Objects.equals(adresse, other.adresse) && Objects.equals(adresseMail, other.adresseMail)
+				&& code == other.code && Objects.equals(dateInscription, other.dateInscription)
+				&& Objects.equals(numTelephone, other.numTelephone) && ptsFidelite == other.ptsFidelite
+				&& Double.doubleToLongBits(resteAchatFidel) == Double.doubleToLongBits(other.resteAchatFidel);
+	}
+
+	private static int compteur = 0;
     private int code;
     private String dateInscription;
     private Adresse adresse;

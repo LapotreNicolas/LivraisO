@@ -1,10 +1,29 @@
 package fr.ua.iutlens.sae.app;
 
+import java.util.Objects;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class Commande implements RemisesPossibles {
-    private static final int MAX_COMMANDES = 100;
+    @Override
+	public int hashCode() {
+		return Objects.hash(commandes);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Commande other = (Commande) obj;
+		return Objects.equals(commandes, other.commandes);
+	}
+
+	private static final int MAX_COMMANDES = 100;
     private ObservableList<LigneDeCommande> commandes;
     private static int pos;
 

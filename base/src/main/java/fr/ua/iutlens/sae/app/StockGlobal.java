@@ -1,5 +1,7 @@
 package fr.ua.iutlens.sae.app;
 
+import java.util.Objects;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -12,7 +14,24 @@ public class StockGlobal {
         this.tabStockEau = FXCollections.observableArrayList();
     }
 
-    public ObservableList<StockEau> getTabStockEau() {return this.tabStockEau;}
+    @Override
+	public int hashCode() {
+		return Objects.hash(tabStockEau);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		StockGlobal other = (StockGlobal) obj;
+		return Objects.equals(tabStockEau, other.tabStockEau);
+	}
+
+	public ObservableList<StockEau> getTabStockEau() {return this.tabStockEau;}
 
     public int recherche(StockEau stockEau) {
         int i = position-1;

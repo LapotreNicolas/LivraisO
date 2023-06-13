@@ -1,7 +1,26 @@
 package fr.ua.iutlens.sae.app;
 
+import java.util.Objects;
+
 public class StockEau{
-    private Eau eau;
+    @Override
+	public int hashCode() {
+		return Objects.hash(eau, entrepot, quantite);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		StockEau other = (StockEau) obj;
+		return Objects.equals(eau, other.eau) && Objects.equals(entrepot, other.entrepot) && quantite == other.quantite;
+	}
+
+	private Eau eau;
     private Entrepot entrepot;
     private int quantite;
 
