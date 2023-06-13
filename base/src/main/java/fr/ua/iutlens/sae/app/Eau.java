@@ -18,8 +18,7 @@ public class Eau {
 		if (getClass() != obj.getClass())
 			return false;
 		Eau other = (Eau) obj;
-		return catEau == other.catEau && identifiant == other.identifiant && Objects.equals(marque, other.marque)
-				&& Double.doubleToLongBits(prix) == Double.doubleToLongBits(other.prix);
+		return  identifiant == other.getIdentifiant();
 	}
 
 	private static int comptId = 0;
@@ -80,16 +79,6 @@ public class Eau {
      */
     public void setPrix(double prix) {
         this.prix = prix;
-    }
-
-    // Equal
-
-    /* Méthode qui compare l'identifiant de l'objet Eau avec l'identifiant d'un second objet entré en paramètre 
-     * @param eau Un objet de la classe Eau
-     * @return un booléen répondant à la question : "Les deux identifiants des Eau sont-ils les mêmes ?"
-     */
-    public boolean equals(Eau eau) {
-        return this.identifiant == eau.getIdentifiant();
     }
 
     /* Une méthode toString qui renvoie, sous forme de chaine de caractères l'ensemble des attributs de l'objet de la classe Eau

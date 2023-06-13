@@ -38,7 +38,7 @@ public class Adresse {
         this.commune = new Commune(insee, nom, nomDepartement);
     }
 
-    private static class Commune{
+    protected static class Commune{
         private String insee;
         @Override
 		public int hashCode() {

@@ -21,7 +21,7 @@ public class Entrepot {
 		if (getClass() != obj.getClass())
 			return false;
 		Entrepot other = (Entrepot) obj;
-		return Objects.equals(adresse, other.adresse) && code == other.code && Objects.equals(nom, other.nom);
+		return code == other.code;
 	}
 
 	/* Constructeur de la classe Entrepot, il initalise pour chaque instance son code, son nom et son adresse selon les valeurs saisies.
@@ -61,14 +61,6 @@ public class Entrepot {
     }
     
     //Méthodes
-
-    /* Méthode qui compare le code de l'entrepot actuel avec le code d'un second entrepot entré en paramètre 
-     * @param entrepot Un objet de la classe Entrepot
-     * @return un booléen répondant à la question : "Les deux codes des entrepots sont-ils les mêmes ?"
-     */
-    public boolean equals(Entrepot entrepot) {
-        return this.code == entrepot.getCode();
-    }
 
     /* Une méthode toString qui renvoie, sous forme de chaine de caractères l'ensemble des attributs de l'objet de la classe Entrepot
      * @return l'ensemble des attributs de l'objet de la classe Entrepot
