@@ -1,13 +1,16 @@
 package fr.ua.iutlens.sae.app;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public class EntrepriseVenteEau {
     private static final int MAX_EMPLOYES=250;
     private static final int MAX_ENTREPOT=20;
     private final String SIRET;
     private String nom;
     private int nbEmployes;
-    private Employe[] employes;
-    private Entrepot[] entrepots;
+    private ObservableList<Employe> employes;
+    private ObservableList<Entrepot> entrepots;
     double disponibilites;
     boolean endette;
 
@@ -16,8 +19,8 @@ public class EntrepriseVenteEau {
         this.SIRET = siret;
         this.nom = nom;
         this.nbEmployes = nbEmployes;
-        this.employes = new Employe[MAX_EMPLOYES];
-        this.entrepots = new Entrepot[MAX_ENTREPOT];
+        this.employes = FXCollections.observableArrayList();
+        this.entrepots = FXCollections.observableArrayList();
         this.disponibilites=0;
         this.endette=false;
     }
@@ -49,13 +52,15 @@ public class EntrepriseVenteEau {
     //Méthodes
 
     public void Embaucher(Employe employe){
-        this.employes[nbEmployes]=employe;
-        nbEmployes++;
+    	if (nbEmployes < MAX_EMPLOYES) {	
+    		this.employes.add(employe);
+        	nbEmployes++;
+    	}
     }
 
     public int rechercheEmployer(Employe employe){
         for(int i=0; i<this.nbEmployes;i++) {
-            if (this.employes[i].equals(employe.getId())){
+            if (this.employes.get(i).equals(employe.getId())){
                 return i;
             };
         }
@@ -64,7 +69,7 @@ public class EntrepriseVenteEau {
 
     public void Licencier(Employe employe){
         if (rechercheEmployer(employe)>=0){
-            this.employes[rechercheEmployer(employe)]=this.employes[nbEmployes];
+            this.employes.add(rechercheEmployer(employe), this.employes.get(nbEmployes));
         }
     }
 
