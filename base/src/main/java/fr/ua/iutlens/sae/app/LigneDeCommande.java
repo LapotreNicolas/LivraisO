@@ -49,7 +49,7 @@ public class LigneDeCommande {
     @Override
     public String toString() {
         return "LigneDeCommande{" +
-                "eau=" + eau +
+                "eau=" + eau.toString() +
                 ", quantite=" + quantite +
                 '}';
     }

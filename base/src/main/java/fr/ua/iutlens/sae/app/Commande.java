@@ -5,6 +5,8 @@ import java.util.Objects;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+
+
 public class Commande implements RemisesPossibles {
     private static final int MAX_COMMANDES = 100;
     private ObservableList<LigneDeCommande> commandes;
@@ -22,7 +24,7 @@ public class Commande implements RemisesPossibles {
      */
     public void ajouterCommande(LigneDeCommande commande) {
         this.commandes.add(commande);
-        Commande.pos++;
+        pos++;
     }
     /* Ajoutes plusieurs commandes
      * @param commandes le tableau de commandes à ajouter
@@ -31,7 +33,7 @@ public class Commande implements RemisesPossibles {
         if (commandes.size() + pos < MAX_COMMANDES) {
             for (LigneDeCommande commande : commandes) {
                 this.commandes.add(commande);
-                Commande.pos++;
+                pos++;
             }
         }
     }
@@ -54,10 +56,10 @@ public class Commande implements RemisesPossibles {
         int pts = client.getPtsFidelite();
         if (pts >= 100) {
             if (client.getTypeClient().equals("particulier")) {
-                solde = 1 - (pts / 10000);
+                solde = 1 - (pts / 10000.0);
                 if (solde<0.9) solde = 0.9;
             } else {
-                solde = 1 - (pts/100000);
+                solde = 1 - (pts/100000.0);
                 if (solde < 0.9) solde = 0.9;
             }
         }
@@ -99,7 +101,7 @@ public class Commande implements RemisesPossibles {
         String informations = "Tableau des Commandes :";
         if (pos == 0) informations += "\n\tpas de commande";
         else {
-            for (int i = 0 ; i < pos ; i++) informations += "\n\t- " + this.commandes.get(i);
+            for (int i = 0 ; i < pos ; i++) informations += "\n\t- " + this.commandes.get(i).toString();
         }
         return informations;
     }
