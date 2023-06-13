@@ -20,24 +20,33 @@ public class ClientEntreprise extends Client{
 		if (getClass() != obj.getClass())
 			return false;
 		ClientEntreprise other = (ClientEntreprise) obj;
-		return Objects.equals(SIRET, other.SIRET) && TRANCHE_ACHAT == other.TRANCHE_ACHAT
-				&& Objects.equals(nom, other.nom);
+		return Objects.equals(SIRET, other.SIRET) && Objects.equals(nom, other.nom);
 	}
 
 	private String nom;
     private final String SIRET;
-    private final int TRANCHE_ACHAT = 1000;
+    private static final int TRANCHE_ACHAT = 1000;
 
+    //CONSTRUCTEUR
+    
     public ClientEntreprise(String dateInscription ,Adresse adresse, String numTel, String mail, String nom, String siret){
         super(dateInscription,adresse,numTel,mail);
         this.nom=nom;
         this.SIRET=siret;
     }
 
+    //SETTERS
+    
     public String getNom(){return this.nom;}
 
     public String getSIRET(){return this.SIRET;}
+    
+    public String getTypeClient(){
+        return "entreprise";
+    }
 
+    //Méthodes
+    
     public void ajoutPointsFidelite(double achat){
         achat += resteAchatFidel;
         while(achat >= TRANCHE_ACHAT){
@@ -47,12 +56,8 @@ public class ClientEntreprise extends Client{
         resteAchatFidel = achat;
     }
 
-    public String getTypeClient(){
-        return "entreprise";
-    }
-
     @Override
     public String toString(){
-        return "\n\tClient Entreprise"+super.toString()+"\n\tNom : "+this.nom+"\tSIRET : "+this.SIRET;
+        return "\n\tClient Entreprise"+super.toString()+"\n\t Nom : "+this.nom+"\tSIRET : "+this.SIRET;
     }
 }
