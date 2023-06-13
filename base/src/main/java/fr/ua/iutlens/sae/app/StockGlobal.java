@@ -55,10 +55,10 @@ public class StockGlobal {
      * @param indice          un indice du tableau de StockGlobal
      * @param quantiteEnMoins la quantite à retirer du stock à l'indice i
      */
-    public void reduireQuantite(int indice, int quantiteEnMoins) {
+    public void reduireQuantite(int indice, int quantiteEnMoins) throws Exception {
         int quantiteRestante = this.tabStockEau.get(indice).getQuantite() - quantiteEnMoins;
-        if (quantiteRestante < 0) quantiteRestante = 0; //empêcher la quantité négative
-        this.tabStockEau.get(indice).setQuantite(quantiteRestante);
+        if (quantiteRestante < 0) throw new Exception("Quantité du stock d'eau inférieur à la quantité à retirer !"); //empêcher la quantité négative
+        else this.tabStockEau.get(indice).setQuantite(quantiteRestante);
     }
 
     /* Trie le tableau selon booléen saisi en paramètre. Possède une surcharge pour effectuer un tri croissant par défaut.

@@ -39,6 +39,12 @@ class TestCommande {
 	@Mock
 	Client client2;
 	
+	@Mock
+    Eau eau1;
+
+    @Mock
+    Eau eau2;
+	
 	@BeforeEach
 	void initLigne() {
 		cmd = new Commande();
@@ -111,7 +117,6 @@ class TestCommande {
 	void testMontantDeLaRemise10() {
 		// Given
 		when(client.getPtsFidelite()).thenReturn(10);
-		when(client.getTypeClient()).thenReturn("établissement publique");
 
 		// When
 		double solde = cmd.montantDeLaRemise(client);
@@ -141,43 +146,96 @@ class TestCommande {
 	}
 	
 	@Test
-	void testToEquals() {
+    void testEquals() {
+        // Given
+        Commande cmd2 = new Commande();
+        Commande cmd3 = new Commande();
+        Commande cmd4 = new Commande();
+        cmd.ajouterCommande(ligne1);
+        cmd2.ajouterCommande(ligne1);
+        cmd3.ajouterCommande(ligne2);
+        
+        // When
+        boolean equals11 = cmd.equals(cmd);
+        boolean equals12 = cmd.equals(cmd2);
+        boolean equals23 = cmd2.equals(cmd3);
+        boolean equals34 = cmd3.equals(cmd4);
+        boolean equals1 = cmd.equals(null);
+        boolean equals1ligne = cmd.equals(ligne1);
+        
+        // Then
+        assertTrue(equals11);
+        assertTrue(equals12);
+        assertFalse(equals23);
+        assertFalse(equals34);
+        assertFalse(equals1);
+        assertFalse(equals1ligne);
+    }
+	
+	@Test
+	void testToString() {
 		// Given
-		Commande cmd2 = new Commande();
-		Commande cmd3 = new Commande();
-		Commande cmd4 = new Commande();
 		cmd.ajouterCommande(ligne1);
-		cmd2.ajouterCommande(ligne1);
-		cmd3.ajouterCommande(ligne2);
+		Commande cmd2 = new Commande();
+		when(ligne1.toString()).thenReturn("ligne1");
 		
 		// When
-		boolean equals11 = cmd.equals(cmd);
-		boolean equals12 = cmd.equals(cmd2);
-		boolean equals23 = cmd2.equals(cmd3);
-		boolean equals34 = cmd3.equals(cmd4);
-		boolean equals1 = cmd.equals(null);
-		boolean equals1eau = cmd.equals(ligne1);
+		String string = cmd.toString();
+		String string2 = cmd2.toString();
 		
 		// Then
-		assertTrue(equals11);
-		assertTrue(equals12);
-		assertFalse(equals23);
-		assertFalse(equals34);
+		assertEquals("Tableau des Commandes :\n\t- ligne1", string);
+		assertEquals("Tableau des Commandes :\n\tpas de commande", string2);
 	}
 	
-//	@Test
-//	void testToString() {
-//		// Given
-//		cmd.ajouterCommande(ligne1);
-//		Commande cmd2 = new Commande();
-//		when(ligne1.toString()).thenReturn("ligne1");
-//		
-//		// When
-//		String string = cmd.toString();
-//		String string2 = cmd2.toString();
-//		
-//		// Then
-//		assertEquals("Tableau des Commandes :\n\t- ligne1", string);
-//		assertEquals("Tableau des Commandes :\n\tpas de commande", string2);
-//	}
+	@Test
+    void testNombreBouteillesGratuites1() {
+        // Given
+        when(client.getTypeClient()).thenReturn("particulier");
+        when(client2.getTypeClient()).thenReturn("établissement public");
+        
+        // When
+        int nbBouteilles = cmd.nombreBouteillesGratuites(50, client);
+        int nbBouteilles2 = cmd.nombreBouteillesGratuites(200, client2);
+        
+        // Then
+        assertEquals(4, nbBouteilles);
+        assertEquals(3, nbBouteilles2);
+    }
+    
+    @Test
+    void testNombreBouteillesGratuites2() {
+        // Given
+        when(client.getTypeClient()).thenReturn("entreprise");
+        when(client2.getTypeClient()).thenReturn("mouchoir");
+        
+        // When
+        int nbBouteilles = cmd.nombreBouteillesGratuites(300, client);
+        int nbBouteilles2 = cmd.nombreBouteillesGratuites(5, client2);
+        
+        // Then
+        assertEquals(2, nbBouteilles);
+        assertEquals(0, nbBouteilles2);
+    }
+    
+    @Test
+    void testMontantTotal() {
+        // Given
+        cmd.ajouterCommande(ligne1);
+        cmd.ajouterCommande(ligne2);
+        when(ligne1.getEau()).thenReturn(eau1);
+        when(eau1.getPrix()).thenReturn(3.0);
+        when(ligne1.getQuantite()).thenReturn(50);
+        when(ligne2.getEau()).thenReturn(eau2);
+        when(eau2.getPrix()).thenReturn(4.5);
+        when(ligne2.getQuantite()).thenReturn(30);
+        when(client.getTypeClient()).thenReturn("particulier");
+        when(client.getPtsFidelite()).thenReturn(69);
+        
+        // When
+        double total = cmd.montantTotal(client);
+        
+        // Then
+        assertEquals(264.0, total);
+    }
 }

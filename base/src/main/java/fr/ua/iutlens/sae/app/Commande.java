@@ -10,12 +10,13 @@ import javafx.collections.ObservableList;
 public class Commande implements RemisesPossibles {
     private static final int MAX_COMMANDES = 100;
     private ObservableList<LigneDeCommande> commandes;
-    private static int pos;
+    private int pos;
 
     //CONSTRUCTEUR
     
     public Commande() {
         this.commandes = FXCollections.observableArrayList();
+        this.pos = 0;
     }
 
     //Méthodes
@@ -94,7 +95,7 @@ public class Commande implements RemisesPossibles {
         for (int i = 0; i < this.commandes.size(); i++) {
             prixTotal += this.commandes.get(i).getEau().getPrix() * (this.commandes.get(i).getQuantite()-nombreBouteillesGratuites(this.commandes.get(i).getQuantite(),client));
         }
-        return prixTotal - (prixTotal*(montantDeLaRemise(client)));
+        return (prixTotal*(montantDeLaRemise(client)));
     }
 @Override
     public String toString() {
