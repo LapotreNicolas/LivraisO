@@ -1,5 +1,8 @@
 package fr.ua.iutlens.sae.app;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public class Test {
     public static void main(String[] args) {
         Eau eau1 = new Eau("Vitel", Eau.Categorie.EAU_PLATE, 2.5);
@@ -27,7 +30,7 @@ public class Test {
         LigneDeCommande ligne3 = new LigneDeCommande(eau2, 21);
         LigneDeCommande ligne4 = new LigneDeCommande(eau1, 14);
         LigneDeCommande ligne5 = new LigneDeCommande(eau1, 9);
-        LigneDeCommande[] tabLignes21 = {ligne2,ligne1};
+        ObservableList<LigneDeCommande> tabLignes21 = FXCollections.observableArrayList(ligne2,ligne1);
         Commande cmd1 = new Commande();
         System.out.println(eau1);
         System.out.println(eau2);

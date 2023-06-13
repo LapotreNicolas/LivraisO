@@ -1,7 +1,27 @@
 package fr.ua.iutlens.sae.app;
 
+import java.util.Objects;
+
 public class Paiement{
-    private double montant;
+    @Override
+	public int hashCode() {
+		return Objects.hash(methodePaie, montant);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Paiement other = (Paiement) obj;
+		return Objects.equals(methodePaie, other.methodePaie)
+				&& Double.doubleToLongBits(montant) == Double.doubleToLongBits(other.montant);
+	}
+
+	private double montant;
     private MethodePaiement methodePaie;
 
     public Paiement(double montant, MethodePaiement methodePaie){
