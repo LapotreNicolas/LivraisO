@@ -24,7 +24,7 @@ class TestLigneDeCommande {
 	void delLigne() {
 		ligne = null;
 	}
-	
+
 	@Test
 	void testGetEau() {
 		// Given
