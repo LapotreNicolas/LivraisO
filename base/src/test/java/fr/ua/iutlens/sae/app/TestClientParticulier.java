@@ -51,7 +51,7 @@ class TestClientParticulier {
 	}
 	
 	/**
-	 * Depuis la class ClientParticulier, verifie la method getTypeClient
+	 * Depuis la class ClientParticulier, vérifie la method getTypeClient
 	 */
 	@Test
 	void testGetTypeClient() {
