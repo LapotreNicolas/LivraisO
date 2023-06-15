@@ -3,6 +3,14 @@ package fr.ua.iutlens.sae.app;
 import java.util.Objects;
 
 public class Paiement{
+    private double montant;
+    private MethodePaiement methodePaie;
+    //CONSTRUCTEURS
+    public Paiement(double montant, MethodePaiement methodePaie){
+        this.montant = montant;
+        this.methodePaie = methodePaie;
+    }
+    
     @Override
 	public int hashCode() {
 		return Objects.hash(methodePaie, montant);
@@ -21,14 +29,7 @@ public class Paiement{
 				&& Double.doubleToLongBits(montant) == Double.doubleToLongBits(other.montant);
 	}
 
-	private double montant;
-    private MethodePaiement methodePaie;
-
-    public Paiement(double montant, MethodePaiement methodePaie){
-        this.montant = montant;
-        this.methodePaie = methodePaie;
-    }
-
+	//GETTERS
     public double getMontant(){
         return this.montant;
     }
@@ -36,7 +37,7 @@ public class Paiement{
     public MethodePaiement getMethodePaie(){
         return this.methodePaie;
     }
-
+    //SETTERS
     public void setMethodePaie(MethodePaiement methodePaie){
         this.methodePaie = methodePaie;
     }
@@ -44,7 +45,7 @@ public class Paiement{
     public void setMontant(double montant){
         this.montant = montant;
     }
-
+    //Méthode
     @Override
     public String toString() {
         return "Paiement{" +

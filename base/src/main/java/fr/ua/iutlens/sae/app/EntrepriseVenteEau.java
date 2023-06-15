@@ -6,18 +6,40 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class EntrepriseVenteEau {
-    private static final int MAX_EMPLOYES=250;
-    private static final int MAX_ENTREPOT=20;
+    public static final int MAX_EMPLOYES=250;
+    public static final int MAX_ENTREPOT=20;
     private final String SIRET;
     private String nom;
     private int nbEmployes;
     private ObservableList<Employe> employes;
     private ObservableList<Entrepot> entrepots;
     double disponibilites;
-    boolean endette;
+ 
+    @Override
+	public int hashCode() {
+		return Objects.hash(SIRET, disponibilites, employes, endette, entrepots, nbEmployes, nom);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		EntrepriseVenteEau other = (EntrepriseVenteEau) obj;
+		return Objects.equals(SIRET, other.SIRET)
+				&& Double.doubleToLongBits(disponibilites) == Double.doubleToLongBits(other.disponibilites)
+				&& Objects.equals(employes, other.employes) && endette == other.endette
+				&& Objects.equals(entrepots, other.entrepots) && nbEmployes == other.nbEmployes
+				&& Objects.equals(nom, other.nom);
+	}
+
+	boolean endette;
 
 
-    public EntrepriseVenteEau(String siret,String nom, int nbEmployes) {
+	public EntrepriseVenteEau(String siret,String nom, int nbEmployes) {
         this.SIRET = siret;
         this.nom = nom;
         this.nbEmployes = nbEmployes;
@@ -53,32 +75,31 @@ public class EntrepriseVenteEau {
 
     //Méthodes
 
-    public void Embaucher(Employe employe){
-    	if (nbEmployes < MAX_EMPLOYES) {	
-    		this.employes.add(employe);
-        	nbEmployes++;
-    	}
+    public void embaucher(Employe employe){
+        this.employes.add(employe);
+        nbEmployes++;
     }
 
     public int rechercheEmployer(Employe employe){
         for(int i=0; i<this.nbEmployes;i++) {
-            if (this.employes.get(i).equals(employe.getId())){
+            if (this.employes.get(i).equals(employe.getId())) {
                 return i;
-            };
+            }
         }
         return -1;
     }
 
-    public void Licencier(Employe employe){
+    public void licencier(Employe employe){
         if (rechercheEmployer(employe)>=0){
-            this.employes.add(rechercheEmployer(employe), this.employes.get(nbEmployes));
+            this.employes.add(rechercheEmployer(employe), employes.get(nbEmployes));
+            nbEmployes--;
         }
     }
 
     /* Réduit les disponibilités de l'entreprise du montant du virement
      * @param virement le montant du virement effectué
      */
-    public void EffectueVirement(double virement){
+    public void effectueVirement(double virement){
         this.disponibilites-=virement;
         if(this.disponibilites < 0){
             this.endette = true;
@@ -102,25 +123,4 @@ public class EntrepriseVenteEau {
     public String toString(){
         return "Entreprise "+this.nom+" SIRET : "+this.SIRET+". Possède "+this.nbEmployes+" Employés, "+this.disponibilites+" € en disponibilités. Endetté ? "+this.endette;
     }
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(SIRET, disponibilites, employes, endette, entrepots, nbEmployes, nom);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		EntrepriseVenteEau other = (EntrepriseVenteEau) obj;
-		return Objects.equals(SIRET, other.SIRET)
-				&& Double.doubleToLongBits(disponibilites) == Double.doubleToLongBits(other.disponibilites)
-				&& Objects.equals(employes, other.employes) && endette == other.endette
-				&& Objects.equals(entrepots, other.entrepots) && nbEmployes == other.nbEmployes
-				&& Objects.equals(nom, other.nom);
-	}
 }

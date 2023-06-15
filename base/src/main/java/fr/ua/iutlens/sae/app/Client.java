@@ -7,6 +7,7 @@ public abstract class Client{
 	public int hashCode() {
 		return Objects.hash(adresse, adresseMail, code, dateInscription, numTelephone, ptsFidelite, resteAchatFidel);
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -31,7 +32,9 @@ public abstract class Client{
     protected int ptsFidelite;
     protected double resteAchatFidel;
 
-    public Client(String dateInscrisption, Adresse adresse, String numTel, String mail){
+    //CONSTRUCTEURS
+    
+    protected Client(String dateInscrisption, Adresse adresse, String numTel, String mail){
         compteur ++;
         this.code = compteur;
         this.dateInscription = dateInscrisption;
@@ -41,6 +44,9 @@ public abstract class Client{
         this.ptsFidelite = 0;
         this.resteAchatFidel = 0;
     }
+    
+    //GETTERS
+    
     public int getCode() {return this.code;}
 
     public String getDateInscription(){return this.dateInscription;}
@@ -54,19 +60,38 @@ public abstract class Client{
     public int getPtsFidelite(){return this.ptsFidelite;}
 
     public double getResteAchatFidel(){return this.resteAchatFidel;}
+    
+    public abstract String getTypeClient();
 
+    //SETTERS
+    
     public void setAdresse(Adresse adresse){this.adresse = adresse;}
 
     public void setNumTelephone(String numTel){this.numTelephone = numTel;}
 
     public void setAdresseMail(String mail){this.adresseMail = mail;}
 
-    public void retraitPointsFidelite(int points){this.ptsFidelite = this.ptsFidelite - points;}
+    //Méthodes
+    
+    /*En cas de remboursement, retire les points de fidélité équivalents au compte du client. 
+     *@param points le nombre de points de fidélité à retirer
+     *@see Paiement
+     */
+    public void retraitPointsFidelite(int points){
+    	this.ptsFidelite = this.ptsFidelite - points;
+    	if(ptsFidelite < 0) {
+    		ptsFidelite = 0;
+    	}
+    }
 
+    /* Lors d'un achat ajoute le nombre de points de fidélité equivalents au compte du client 
+     * @param achat le prix de l'achat
+     */
     public abstract void ajoutPointsFidelite(double achat);
 
-    public abstract String getTypeClient();
-
+    /* Une méthode toString qui renvoie, sous forme de chaine de caractères l'ensemble des attributs de l'objet de la classe Client
+     * @return l'ensemble des attributs de l'objet de la classe Client
+     */
     @Override
     public String toString(){
         return "\n------------------------------------\n\tCode : "+this.code+"\tInscrit en : "+this.dateInscription+"\tMail : "+this.adresseMail+"\n\tTelephone : "+this.numTelephone+"\tAdresse : "+this.adresse+"\n\tPoints de fidélité : "+this.ptsFidelite;
