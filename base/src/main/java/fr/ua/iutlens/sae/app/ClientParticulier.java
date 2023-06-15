@@ -3,6 +3,7 @@ package fr.ua.iutlens.sae.app;
 import java.util.Objects;
 
 public class ClientParticulier extends Client{
+    private String nom;
     @Override
 	public int hashCode() {
 		final int prime = 31;
@@ -20,24 +21,33 @@ public class ClientParticulier extends Client{
 		if (getClass() != obj.getClass())
 			return false;
 		ClientParticulier other = (ClientParticulier) obj;
-		return TRANCHE_ACHAT == other.TRANCHE_ACHAT && Objects.equals(nom, other.nom)
+		return Objects.equals(nom, other.nom)
 				&& Objects.equals(prenom, other.prenom);
 	}
 
-	private String nom;
-    private String prenom;
-    private final int TRANCHE_ACHAT = 100;
+	private String prenom;
+    private static final int TRANCHE_ACHAT = 100;
 
+    //CONSTRUCTEURS
+    
     public ClientParticulier(String dateInscription, Adresse adresse, String numTel, String mail, String nom, String prenom){
         super(dateInscription,adresse,numTel,mail);
         this.nom=nom;
         this.prenom=prenom;
     }
 
+    //GETTERS
+    
     public String getNom(){return this.nom;}
 
     public String getPrenom(){return this.prenom;}
 
+    public String getTypeClient(){
+        return "particulier";
+    }
+    
+    //Méthodes
+    
     public void ajoutPointsFidelite(double achat){
         achat += resteAchatFidel;
         while(achat >= TRANCHE_ACHAT){
@@ -47,12 +57,8 @@ public class ClientParticulier extends Client{
         resteAchatFidel = achat;
     }
 
-    public String getTypeClient(){
-        return "particulier";
-    }
-
     @Override
     public String toString(){
-        return "\n\tClient Particulier"+super.toString()+"\n\tNom : "+this.nom+"\tPrénom : "+this.prenom;
+        return "\n\tClient Particulier"+super.toString()+"\n\t Nom : "+this.nom+"\tPrénom : "+this.prenom;
     }
 }

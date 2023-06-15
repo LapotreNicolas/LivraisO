@@ -24,18 +24,24 @@ public class StockEau{
     private Entrepot entrepot;
     private int quantite;
 
+    //CONSTRUCTEURS
+    
     public StockEau(Eau eau, Entrepot entrepot, int quantite){
         this.eau = eau;
         this.entrepot = entrepot;
         this.quantite = quantite;
     }
 
+    //GETTERS
+    
     public Eau getEau(){return this.eau;}
 
     public Entrepot getEntrepot(){return this.entrepot;}
 
     public int getQuantite(){return this.quantite;}
 
+    //SETTERS
+    
     public void setEntrepot(Entrepot entrepot){
         this.entrepot = entrepot;
     }
@@ -44,10 +50,11 @@ public class StockEau{
         this.quantite = quantite;
     }
 
-    public boolean equals(StockEau stockEau) {
-        return (this.eau.equals(stockEau.getEau()) && this.entrepot.equals(stockEau.getEntrepot()));
-    }
+    //Méthodes
 
+    /* Une méthode toString qui renvoie, sous forme de chaine de caractères l'ensemble des attributs de l'objet de la classe StockEau
+     * @return l'ensemble des attributs de l'objet de la classe StockEau
+     */
     @Override
     public String toString(){
         return "Stock de "+this.quantite+" caisses de "+this.eau+" dans l'entrepôt "+this.entrepot+".";
