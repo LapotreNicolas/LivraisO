@@ -5,6 +5,8 @@ public class PaiementSimple implements TraitementPaiement {
      * @param p le paiement que l'on doit exécuter
      * @see Paiement
      */
+	public PaiementSimple() {}
+	
     @Override
     public void executePaiement(Paiement p){
         System.out.println("Le paiement de "+ p.getMontant() + "€ a été effectué.");

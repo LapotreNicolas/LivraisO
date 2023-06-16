@@ -1,4 +1,4 @@
-package fr.univartois.butinfo.ihm.spaceinvaders;
+package fr.ua.iutlens.sae.app;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +11,7 @@ import java.io.IOException;
 import fr.ua.iutlens.sae.app.controller.StockEauController;
 import fr.ua.iutlens.sae.app.controller.StockGlobal;
 
-public class SpaceInvadersApplication extends Application {
+public class StockEauApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {

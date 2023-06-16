@@ -45,7 +45,7 @@ class TestEmploye {
 		double salaireApresSetter = employe.getSalaire();
 		
 		// Then
-		assertEquals(0, id);
+		assertEquals(6, id);
 		assertEquals("Iorka", nom);
 		assertEquals("Yves", prenom);
 		assertEquals(Contrat.CDI, contrat);
@@ -80,7 +80,7 @@ class TestEmploye {
 		String string = employe.toString();
 		
 		// Then
-		assertEquals("Employé n°2 | Nom : Iorka | Prénom : Yves | Contrat : Contrat.CDI | Salaire : 2111.04", string);
+		assertEquals("Employé n°0 | Nom : Iorka | Prénom : Yves | Contrat : CDI | Salaire : 2111.04", string);
 	}
 	
 	@Test

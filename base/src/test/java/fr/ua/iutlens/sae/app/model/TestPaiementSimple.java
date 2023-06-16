@@ -20,10 +20,10 @@ import javafx.collections.ObservableList;
  * @author nicolas.lapotre
  *
  */
-
+@ExtendWith(MockitoExtension.class)
 class TestPaiementSimple {
 
-	PaiementSimple paiementSimple;
+	PaiementSimple paiementSimple = new PaiementSimple();
 	
 	@Mock
 	Paiement paiement;

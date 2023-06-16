@@ -50,7 +50,7 @@ public class Paiement{
     public String toString() {
         return "Paiement{" +
                 "montant=" + montant +
-                ", methodePaie=" + methodePaie +
+                ", methodePaie=" + methodePaie.toString() +
                 '}';
     }
 }
