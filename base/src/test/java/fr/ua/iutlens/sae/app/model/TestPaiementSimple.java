@@ -30,12 +30,18 @@ class TestPaiementSimple {
 	
 	@Test
 	void testExecutePaiement() {
+		// Given
+		when(paiement.getMontant()).thenReturn(666.13);
+		
 		// When
 		paiementSimple.executePaiement(paiement);
 	}
 
 	@Test
-	void testExecutePaiement() {
+	void testRemboursement() {
+		// Given
+		when(paiement.getMontant()).thenReturn(420.69);
+		
 		// When
 		paiementSimple.remboursement(paiement);
 	}
