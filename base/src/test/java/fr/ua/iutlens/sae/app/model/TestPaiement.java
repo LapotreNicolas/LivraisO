@@ -3,6 +3,8 @@ package fr.ua.iutlens.sae.app.model;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
+import fr.ua.iutlens.sae.app.model.MethodePaiement;
+import fr.ua.iutlens.sae.app.model.Paiement;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,19 +12,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import fr.ua.iutlens.sae.app.model.Client;
-import fr.ua.iutlens.sae.app.model.Commande;
-import fr.ua.iutlens.sae.app.model.Eau;
-import fr.ua.iutlens.sae.app.model.LigneDeCommande;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
 /**
  * 
  * @author nicolas.lapotre
  *
  */
-
+@ExtendWith(MockitoExtension.class)
 class TestPaiement {
 
 	Paiement paiement;
@@ -63,13 +58,13 @@ class TestPaiement {
 	@Test
 	void testToString() {
 		// Given
-		when(methodePaiement.toString()).thenReturn("Espèces")
+		when(methodePaiement.toString()).thenReturn("Espèces");
 		
 		// When 
 		String string = paiement.toString();
 		
 		// Then
-		assertEquals("Paiement{montant=666.13, methodePaie=Espèces}")
+		assertEquals("Paiement{montant=666.13, methodePaie=Espèces}", string);
 	}
 	
 	@Test
@@ -99,16 +94,16 @@ class TestPaiement {
         // When
         boolean equals11 = paiement.equals(paiement);
         boolean equals12 = paiement.equals(paiement2);
-        boolean equals23 = paiement.equals(paiement3);
-        boolean equals34 = paiement.equals(paiement4);
+        boolean equals13 = paiement.equals(paiement3);
+        boolean equals14 = paiement.equals(paiement4);
         boolean equals1 = paiement.equals(null);
         boolean equals1string = paiement.equals("coucou");
         
         // Then
         assertTrue(equals11);
-        assertTrue(equals12);
-        assertFalse(equals23);
-        assertFalse(equals34);
+        assertFalse(equals12);
+        assertFalse(equals13);
+        assertTrue(equals14);
         assertFalse(equals1);
         assertFalse(equals1string);
     }

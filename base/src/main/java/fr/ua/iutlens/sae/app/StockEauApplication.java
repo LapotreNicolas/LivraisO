@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import fr.ua.iutlens.sae.app.controller.StockEauController;
-import fr.ua.iutlens.sae.app.controller.StockGlobal;
+import fr.ua.iutlens.sae.app.model.StockGlobal;
 
 public class StockEauApplication extends Application {
 

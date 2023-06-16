@@ -8,12 +8,13 @@ import javafx.collections.ObservableList;
 public class StockGlobal {
     public static final int MAX_STOCK_EAU = 100;
     private ObservableList<StockEau> tabStockEau;
-    private static int position = 0;
+    private int position;
 
     //CONSTRUCTEURS
     
     public StockGlobal() {
         this.tabStockEau = FXCollections.observableArrayList();
+        this.position = 0;
     }
 
     public ObservableList<StockEau> getTabStockEau() {return this.tabStockEau;}
@@ -105,7 +106,7 @@ public class StockGlobal {
         String informations = "Tableau des Stocks d'Eau :";
         if (position == 0) informations += "\n\tpas de stock";
         else {
-            for (int i = 0 ; i < position ; i++) informations += "\n\t- " + this.tabStockEau.get(i);
+            for (int i = 0 ; i < position ; i++) informations += "\n\t- " + this.tabStockEau.get(i).toString();
         }
         return informations;
     }
