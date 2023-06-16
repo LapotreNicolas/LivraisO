@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Employe {
     @Override
 	public int hashCode() {
-		return Objects.hash(compteur, contrat, id, nom, prenom, salaire);
+		return Objects.hash(contrat, id, nom, prenom, salaire);
 	}
 
 	@Override
