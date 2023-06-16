@@ -110,7 +110,7 @@ class TestEmploye {
         boolean equals11 = employe.equals(employe);
         boolean equals12 = employe.equals(employe2);
         boolean equals1 = employe.equals(null);
-        boolean equals1int = employe.equals(62);
+        boolean equals1int = employe.equals(64);
         
         // Then
         assertTrue(equals11);

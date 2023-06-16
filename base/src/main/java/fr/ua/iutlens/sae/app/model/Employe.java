@@ -17,9 +17,7 @@ public class Employe {
 		if (getClass() != obj.getClass())
 			return false;
 		Employe other = (Employe) obj;
-		return contrat == other.contrat && id == other.id
-				&& Objects.equals(nom, other.nom) && Objects.equals(prenom, other.prenom)
-				&& Double.doubleToLongBits(salaire) == Double.doubleToLongBits(other.salaire);
+		return id == other.id
 	}
 
 	public static int compteur = 0;
@@ -73,15 +71,11 @@ public class Employe {
         }
     }
 
-    public boolean equals(int id){
-        return this.id==id;
-    }
-
     /* Affiche l'ensemble des attributs de l'objet Employé désigné
      * @return Une chaine de caractères String représentant l'ensemble des attributs de l'objet désigné.
      */
     @Override
     public String toString(){
-        return "Employé n°"+this.id+" Nom : "+this.nom+" Prénom : "+this.prenom+" Contrat : "+this.contrat+" Salaire : "+this.salaire;
+        return "Employé n°"+this.id+" | Nom : "+this.nom+" | Prénom : "+this.prenom+" | Contrat : "+this.contrat+" | Salaire : "+this.salaire;
     }
 }
