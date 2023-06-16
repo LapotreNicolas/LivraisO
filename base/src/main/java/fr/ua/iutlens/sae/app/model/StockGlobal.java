@@ -68,12 +68,13 @@ public class StockGlobal {
     public void trier(boolean croissante) {
         int j;
         for (int i = 0 ; i < position ; i++) {
+        	StockEau tmp = this.tabStockEau.get(i);
+        	this.tabStockEau.remove(tmp);
             j = i;
-            while (j > 0 && (this.tabStockEau.get(j-1).getQuantite() > this.tabStockEau.get(j).getQuantite() || croissante)) {
-                StockEau tmp = this.tabStockEau.get(j);
-                this.tabStockEau.add(j, tabStockEau.get(j-1));
-                this.tabStockEau.add(--j, tmp);
+            while (j > 0 && (this.tabStockEau.get(j-1).getQuantite() > tmp.getQuantite() && croissante || (this.tabStockEau.get(j-1).getQuantite() < tmp.getQuantite() && ! croissante))) {
+            	this.tabStockEau.remove(j,--j);
             }
+            tabStockEau.add(j, tmp);
         }
     }
     

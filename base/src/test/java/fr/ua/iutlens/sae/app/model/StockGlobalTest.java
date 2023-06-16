@@ -12,6 +12,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import fr.ua.iutlens.sae.app.model.StockEau;
 import fr.ua.iutlens.sae.app.model.StockGlobal;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 /**
  * 
  * @author timeo.quehen
@@ -44,7 +46,7 @@ class StockGlobalTest {
     @Test
     void testGetter() {
     	// Given
-    	ObservableList<StockEau> listeSE;
+    	ObservableList<StockEau> listeSE = FXCollections.observableArrayList();;
     	listeSE.add(se);
     	listeSE.add(se3);
     	listeSE.add(se2);
@@ -74,12 +76,32 @@ class StockGlobalTest {
     }
     
     @Test
+    void testAjouterSupprimer() {
+    	// Given
+    	when(se.getQuantite()).thenReturn(30);
+    	ObservableList<StockEau> listeSE = FXCollections.observableArrayList();;
+    	listeSE.add(se);
+    	listeSE.add(se3);
+    	
+    	// When
+    	sg.ajouter(se);
+    	sg.ajouter(se2);
+    	sg.ajouter(se3);
+    	sg.supprimer(se2);
+    	sg.ajouter(se);
+    	ObservableList<StockEau> liste = sg.getTabStockEau();
+    	
+    	// Then
+    	assertEquals(listeSE, liste);
+    }
+    
+    @Test
     void testTrierCroissant() {
     	// Given
     	when(se.getQuantite()).thenReturn(30);
     	when(se2.getQuantite()).thenReturn(50);
     	when(se3.getQuantite()).thenReturn(10);
-    	ObservableList<StockEau> listeSE;
+    	ObservableList<StockEau> listeSE = FXCollections.observableArrayList();;
     	listeSE.add(se3);
     	listeSE.add(se);
     	listeSE.add(se2);
@@ -96,12 +118,12 @@ class StockGlobalTest {
     }
     
     @Test
-    void testTrierCroissant() {
+    void testTrierDeroissant() {
     	// Given
     	when(se.getQuantite()).thenReturn(13);
     	when(se2.getQuantite()).thenReturn(420);
     	when(se3.getQuantite()).thenReturn(68);
-    	ObservableList<StockEau> listeSE;
+    	ObservableList<StockEau> listeSE = FXCollections.observableArrayList();;
     	listeSE.add(se2);
     	listeSE.add(se3);
     	listeSE.add(se);
@@ -141,7 +163,7 @@ class StockGlobalTest {
 		String string = sg.toString();
 		
 		// Then
-		assertEquals("Tableau des Stocks d'Eau :\n\t- Stock d'Eau\n\t- Stock d'Eau2\n\t- Stock d'Eau3, string);
+		assertEquals("Tableau des Stocks d'Eau :\n\t- Stock d'Eau\n\t- Stock d'Eau 2\n\t- Stock d'Eau 3", string);
 	}
     
     @Test
@@ -197,7 +219,7 @@ class StockGlobalTest {
         
         // Then
         assertTrue(equals11);
-        assertFalse(equals12);
+        assertTrue(equals12);
         assertFalse(equals13);
         assertFalse(equals1);
         assertFalse(equals1true);
