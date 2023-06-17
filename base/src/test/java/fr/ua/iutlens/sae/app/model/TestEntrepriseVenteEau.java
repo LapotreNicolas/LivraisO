@@ -99,11 +99,13 @@ class TestEntrepriseVenteEau {
 		int nb2 = entreprise.getNbEmployes();
 		entreprise.licencier(employe2);
 		int nb3 = entreprise.getNbEmployes();
+		int indiceNonTrouve = entreprise.rechercheEmploye(employe2);
 		
 		// Then
 		assertEquals(0, nb);
 		assertEquals(3, nb2);
 		assertEquals(2, nb3);
+		assertEquals(-1, indiceNonTrouve);
 	}
 
 	@Test
@@ -128,6 +130,10 @@ class TestEntrepriseVenteEau {
 		entreprise.enregistrerClient(client2);
 		entreprise.enregistrerClient(client3);
 		entreprise.supprimerClient(client2);
+		int indiceNonTrouve = entreprise.rechercheClient(client2);
+		
+		// Then
+		assertEquals(-1, indiceNonTrouve);
 	}
 	
 	@Test
@@ -137,6 +143,10 @@ class TestEntrepriseVenteEau {
 		entreprise.enregistrerCommande(commande2);
 		entreprise.enregistrerCommande(commande3);
 		entreprise.supprimerCommande(commande2);
+		int indiceNonTrouve = entreprise.rechercheCommande(commande2);
+		
+		// Then
+		assertEquals(-1, indiceNonTrouve);
 	}
 	
 	@Test
