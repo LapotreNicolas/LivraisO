@@ -1,6 +1,3 @@
-/**
- * 
- */
 package fr.ua.iutlens.sae.app.model;
 
 import static org.junit.jupiter.api.Assertions.*;

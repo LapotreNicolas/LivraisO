@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import fr.ua.iutlens.sae.app.model.Client;
 import fr.ua.iutlens.sae.app.model.Commande;
 import fr.ua.iutlens.sae.app.model.Eau;
+import fr.ua.iutlens.sae.app.model.Employe.Contrat;
 import fr.ua.iutlens.sae.app.model.LigneDeCommande;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
