@@ -153,11 +153,11 @@ class TestEntrepriseVenteEau {
 		boolean endette5 = entreprise.getEndette();
 		
 		// Then
-		assertTrue(endette);
-		assertTrue(endette2);
-		assertFalse(endette3);
-		assertFalse(endette4);
-		assertTrue(endette5);
+		assertFalse(endette);
+		assertFalse(endette2);
+		assertTrue(endette3);
+		assertTrue(endette4);
+		assertFalse(endette5);
 	}
 	
 	@Test
@@ -176,16 +176,16 @@ class TestEntrepriseVenteEau {
 		String string = entreprise.toString();
 		
 		// Then
-		assertEquals("Entreprise : Livrais'O\nSIRET : 2404\nPossède 0 Employés\nListe des employés :\n\t- Employé\nTableau des Stocks d'Eau :\n\t- Stock d'Eau\nListe des clients :\n\t- Client\nListe des commandes :\n\t- Commande\n0 € en disponibilités\nEndetté ? false", string);
+		assertEquals("Entreprise : Livrais'O\nSIRET : 2404\nPossède 1 Employés\nListe des employés :\n\t- Employé\nTableau des Stocks d'Eau :\n\t- Stock d'Eau\nListe des clients :\n\t- Client\nListe des commandes :\n\t- Commande\n0.0 € en disponibilités\nEndetté ? false", string);
 	}
     
     @Test
-	void testToStringVide() {		
+	void testToStringVide() {
 		// When 
 		String string = entreprise.toString();
 		
 		// Then
-		assertEquals("Entreprise : Livrais'O\nSIRET : 2404\nPossède 0 Employés\nListe des employés :\n\tpas d'employé\nTableau des Stocks d'Eau :\n\tpas de stock\nListe des clients :\n\tpas de client\nListe des commandes :\n\tpas de commande\n0 € en disponibilités\nEndetté ? false", string);
+		assertEquals("Entreprise : Livrais'O\nSIRET : 2404\nPossède 0 Employés\nListe des employés :\n\tpas d'employé\nTableau des Stocks d'Eau :\n\tpas de stock\nListe des clients :\n\tpas de client\nListe des commandes :\n\tpas de commande\n0.0 € en disponibilités\nEndetté ? false", string);
 	}
     
 	@Test

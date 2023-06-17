@@ -93,7 +93,7 @@ public class EntrepriseVenteEau {
     }
 
     public void licencier(Employe employe){
-        if (rechercheEmployer(employe)>=0){
+        if (rechercheEmploye(employe)>=0){
             this.employes.remove(employe);
             nbEmployes--;
         }
@@ -205,6 +205,6 @@ public class EntrepriseVenteEau {
         		string += "\n\t- " + commande.toString();
         	}
         }
-        string += "\n" + this.disponibilites+" € en disponibilités\nEndetté ? "+this.endette;
+        return string + "\n" + this.disponibilites+" € en disponibilités\nEndetté ? "+this.endette;
     }
 }

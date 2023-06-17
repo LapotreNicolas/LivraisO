@@ -17,7 +17,7 @@ public class Employe {
 		if (getClass() != obj.getClass())
 			return false;
 		Employe other = (Employe) obj;
-		return id == other.id
+		return id == other.id;
 	}
 
 	public static int compteur = 0;

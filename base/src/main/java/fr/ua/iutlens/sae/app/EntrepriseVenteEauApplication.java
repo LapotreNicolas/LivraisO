@@ -11,7 +11,7 @@ import java.io.IOException;
 import fr.ua.iutlens.sae.app.controller.StockEauController;
 import fr.ua.iutlens.sae.app.model.StockGlobal;
 
-public class StockEauApplication extends Application {
+public class EntrepriseVenteEauApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -25,14 +25,13 @@ public class StockEauApplication extends Application {
 //        stockGlobal.setController(controller);
 //        controller.setStage(stage);
 //        // Ensuite, on la place dans une Scene...
-//		Scene scene = new Scene(viewContent, 750, 500);
+//		  Scene scene = new Scene(viewContent, 750, 500);
 //        // que l'on place elle-même dans la fenêtre.
 //        stage.setScene(scene);
 
         // On peut ensuite donner un titre à la fenêtre.
-        stage.setTitle("Liste des Stockages d'Eau");
+        stage.setTitle("Entreprise de vente d'eau");
 
-        
         // Enfin, on affiche la fenêtre.
         stage.show();
     }

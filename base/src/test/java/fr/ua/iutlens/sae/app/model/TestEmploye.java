@@ -25,7 +25,7 @@ class TestEmploye {
 	
 	@BeforeEach
 	public void initEmploye() {
-		employe = new Employe("Iorka","Yves",Contrat.CDI,2111.04);
+		employe = new Employe("Iorka","Yves",Employe.Contrat.CDI,2111.04);
 	}
 	
 	@AfterEach
@@ -39,7 +39,7 @@ class TestEmploye {
 		int id = employe.getId();
 		String nom = employe.getNom();
 		String prenom = employe.getPrenom();
-		Contrat contrat = employe.getContrat();
+		Employe.Contrat contrat = employe.getContrat();
 		double salaireAvantSetter = employe.getSalaire();
 		employe.setSalaire(2404.68);
 		double salaireApresSetter = employe.getSalaire();
@@ -48,7 +48,7 @@ class TestEmploye {
 		assertEquals(6, id);
 		assertEquals("Iorka", nom);
 		assertEquals("Yves", prenom);
-		assertEquals(Contrat.CDI, contrat);
+		assertEquals(Employe.Contrat.CDI, contrat);
 		assertEquals(2111.04, salaireAvantSetter);
 		assertEquals(2404.68, salaireApresSetter);
 	}
@@ -86,7 +86,7 @@ class TestEmploye {
 	@Test
 	void testToHash() {
 		// Given
-		Employe employe2 = new Employe("Nam", "Exort", Contrat.CDD, 3106.04);
+		Employe employe2 = new Employe("Nam", "Exort", Employe.Contrat.CDD, 3106.04);
 
 		// When
 		int hash1 = employe.hashCode();
@@ -99,7 +99,7 @@ class TestEmploye {
 	@Test
     void testEquals() {
         // Given
-        Employe employe2 = new Employe("The Incendiary", "GralfJord", Contrat.CDD, 1109.04);
+        Employe employe2 = new Employe("The Incendiary", "GralfJord", Employe.Contrat.CDD, 1109.04);
 
         // When
         boolean equals11 = employe.equals(employe);

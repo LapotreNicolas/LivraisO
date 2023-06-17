@@ -47,9 +47,10 @@ public class StockGlobal {
      * @param stockEau un objet de la classe Stockeau
      */
     public void supprimer(StockEau stockEau) {
-        int indice = recherche(stockEau);
-        position--;
-        for (int i = indice ; i < position ; i++) this.tabStockEau.add(i, stockEau);
+        if (recherche(stockEau) >= 0) {	
+        	this.tabStockEau.remove(stockEau);
+        	position--;
+    	}
     }
 
     /* Réduit la quantité du StockEau à l'indice i saisi en paramètre d'une quantité également saisie en paramètre. 
