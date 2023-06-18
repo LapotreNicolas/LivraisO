@@ -15,6 +15,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
+/**
+ * Classe qui gère les actions effectuées dans la vue commandes-view
+ * @author nicolas.lapotre
+ */
 public class CommandesController implements IController {
 
 	private EntrepriseVenteEau entreprise;
@@ -36,6 +40,11 @@ public class CommandesController implements IController {
     private Label labelTitre;
 
     @FXML
+    /**
+     * Méthode qui permet de retourner à la vue précédente.
+     * @param event le lancement de cette méthode
+     * @throws IOException
+     */
     void retour(ActionEvent event) throws IOException {
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/accueil-view.fxml"));
         Parent viewContent = fxmlLoader.load();

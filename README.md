@@ -10,9 +10,14 @@
 08 - Ajout de la classe Test EntrepotTest                                  (N)
 09 - Ajout de la classe Test StockEauTest                                  (T)
 10 - Ajout de la classe Test StockGlobalTest                               (N)
+11 - Ajout des classes Test ClientTest, ClientParticulierTest,
+     ClientEntrepriseTest, ClientEtablissementPublicTest                   (J)
+12 - Ajout des vues de commandes, Stock-deau, client et accueil            (N)
+13 - Ajout des controllers des vues                                        (N)
+14 - Ajout de l'application                                                (N)
 
 #Verison
-1.1
+1.2
 
 #Authors
 QUEHEN Timéo
