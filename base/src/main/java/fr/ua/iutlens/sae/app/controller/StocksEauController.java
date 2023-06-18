@@ -21,6 +21,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+/**
+ * Classe qui gère les actions se déroulant dans la vue stocks-eau-view
+ * @author nicolas.lapotre
+ */
 public class StocksEauController implements IController {
 
 	private EntrepriseVenteEau entreprise;
@@ -88,6 +92,10 @@ public class StocksEauController implements IController {
 
 
     @FXML
+    /**
+     * Méthode qui permet d'ajouter une instance de stock dans la liste
+     * @param event le lancement de cette méthode
+     */
     void ajouterClique(ActionEvent event) {
     	if (ajouter.getText().equals("Ajouter")) {
     		clearInfos();
@@ -127,6 +135,10 @@ public class StocksEauController implements IController {
     }
 
     @FXML
+    /**
+     * Méthode qui permet de retirer le stock d'eau sélectionné de la liste
+     * @param event le lancement de cette méthode
+     */
     void supprimerClique(ActionEvent event) {
     	if (supprimer.getText().equals("Supprimer")) {
 	    	entreprise.getStockGlobal().getTabStockEau().remove(listeStocksEau.getSelectionModel().getSelectedItem());
@@ -143,6 +155,10 @@ public class StocksEauController implements IController {
     }
     
     @FXML
+    /**
+     * Méthode qui affiche les stocks d'eau dans la liste
+     * @param event le lancement de cette méthode
+     */
     void afficherSelection(MouseEvent event) {
     	StockEau stockEau = listeStocksEau.getSelectionModel().getSelectedItem();
 	    if (stockEau != null) {
@@ -153,6 +169,10 @@ public class StocksEauController implements IController {
     	}
     }
     
+    /**
+     * 
+     * @param stockEau le stock d'eau que l'on souhaite ajouter
+     */
     public void ajouteStock(StockEau stockEau) {
     	if (stockEau != null) {
     		entreprise.getStockGlobal().getTabStockEau().add(stockEau);
@@ -165,6 +185,9 @@ public class StocksEauController implements IController {
     	}
     }
     
+    /**
+     * Méthode qui efface l'ensemble des informations d'un client
+     */
     public void clearInfos() {
     	infosEau.setText(null);
     	infosQuantite.setText(null);
@@ -172,6 +195,9 @@ public class StocksEauController implements IController {
     	infosAdresse.setText(null);
     }
     
+    /**
+     * Méthode qui nettoie les cadres d'ajout de client
+     */
     public void clearAjouts() {
     	ajoutEau.setText(null);
     	ajoutEau1.setText(null);
@@ -195,6 +221,10 @@ public class StocksEauController implements IController {
     	ajoutAdresse3.setPrefWidth(0);
     }
     
+    /**
+     * Méthode qui affiche les champs d'informations pour ajouter un client
+     * @param ajout vouloir ou non ajouter un client
+     */
     public void ajout(boolean ajout) {
     	infosEau.setVisible(! ajout);
     	infosQuantite.setVisible(! ajout);
@@ -224,10 +254,20 @@ public class StocksEauController implements IController {
 		}
     }
     
+    /**
+     * Méthode qui vérifie que le texte saisie est un nombre entier
+     * @param text le texte à verifier
+     * @return true si le texte est un nombre entier, false sinon
+     */
     private boolean estNombreEntier(String text) {
     	return text.matches("[0-9]*");
     }
     
+    /**
+     * Méthode qui vérifie que le texte saisie est un nombre décimal
+     * @param text le texte à verifier
+     * @return true si le texte est un nombre décimal, false sinon
+     */
     private boolean estNombreDecimal(String text) {
 		boolean resteVirgule = true;
     	for (char c : text.toCharArray()) {
@@ -243,6 +283,11 @@ public class StocksEauController implements IController {
     }
     
     @FXML
+    /**
+     * Méthode qui permet de retourner à la vue précédente.
+     * @param event le lancement de cette méthode
+     * @throws IOException
+     */
     void retour(ActionEvent event) throws IOException {
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/accueil-view.fxml"));
         Parent viewContent = fxmlLoader.load();

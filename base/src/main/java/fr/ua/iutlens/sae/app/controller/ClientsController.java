@@ -22,6 +22,10 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.input.MouseEvent;
 
+/**
+ * Classe qui gère les actions effectuées dans la vue clients-view
+ * @author nicolas.lapotre
+ */
 public class ClientsController implements IController {
 
 	private EntrepriseVenteEau entreprise;
@@ -106,6 +110,10 @@ public class ClientsController implements IController {
     private ListView<Client> listeClients;
 
     @FXML
+    /**
+     * Méthode qui permet d'ajouter un client à la liste
+     * @param event le lancement de cette méthode
+     */
     void ajouterClique(ActionEvent event) {
     	if (ajouter.getText().equals("Ajouter")) {
     		clearInfos();
@@ -143,6 +151,10 @@ public class ClientsController implements IController {
     }
 
     @FXML
+    /**
+     * Méthode qui permet de supprimer le client surligné de la liste
+     * @param event le lancement de cette méthode
+     */
     void supprimerClique(ActionEvent event) {
     	diffClient.setText(null);
     	if (supprimer.getText().equals("Supprimer")) {
@@ -160,6 +172,10 @@ public class ClientsController implements IController {
     }
     
     @FXML
+    /**
+     * Méthode qui permet d'afficher les clients dans la liste
+     * @param event le lancement de cette méthode
+     */
     void afficherSelection(MouseEvent event) {
     	Client client = listeClients.getSelectionModel().getSelectedItem();
 	    if (client != null) {
@@ -190,6 +206,10 @@ public class ClientsController implements IController {
     	}
     }
     
+    /**
+     * Méthode qui ajoute un client (sais en paramètre) à la liste
+     * @param client le client que l'on souhaite ajouter à la liste
+     */
     public void ajouteClient(Client client) {
     	if (client != null) {
     		entreprise.getClients().add(client);
@@ -203,6 +223,9 @@ public class ClientsController implements IController {
     	}
     }
     
+    /**
+     * Méthode qui efface l'ensemble des informations d'un client
+     */
     public void clearInfos() {
     	infosNom.setText(null);
     	infosDiffClient.setText(null);
@@ -214,6 +237,9 @@ public class ClientsController implements IController {
     	infosPoints.setText(null);
     }
     
+    /**
+     * Méthode qui nettoie les cadres d'ajout de client
+     */
     public void clearAjouts() {
     	ajoutDiffClient.setText(null);
     	ajoutNom.setText(null);
@@ -235,6 +261,11 @@ public class ClientsController implements IController {
     	ajoutTelephone.setPrefWidth(0);
     	ajoutMail.setPrefWidth(0);
     }
+    
+    /**
+     * Méthode qui affiche les champs d'informations pour ajouter un client
+     * @param ajout vouloir ou non ajouter un client
+     */
     public void ajout(boolean ajout) {
 		infosDiffClient.setVisible(! ajout);
 		infosNom.setVisible(! ajout);
@@ -269,6 +300,11 @@ public class ClientsController implements IController {
     }
     
     @FXML
+    /**
+     * Méthode qui permet de retourner à la vue d'accueil
+     * @param event action qui démarre le lancement de cette méthode
+     * @throws IOException
+     */
     void retour(ActionEvent event) throws IOException {
     	FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/accueil-view.fxml"));
         Parent viewContent = fxmlLoader.load();

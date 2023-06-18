@@ -21,6 +21,11 @@ import fr.ua.iutlens.sae.app.model.IController;
 import fr.ua.iutlens.sae.app.model.LigneDeCommande;
 import fr.ua.iutlens.sae.app.model.StockEau;
 
+/**
+ * Classe qui permet l'initialisation et le lancement de l'application 
+ * @author nicolas.lapotre
+ * @see Application
+ */
 public class EntrepriseVenteEauApplication extends Application {
 
     @Override
@@ -103,6 +108,10 @@ public class EntrepriseVenteEauApplication extends Application {
         stage.show();
     }
 
+    /**
+     * Méthode qui démarre l'application de gestion de l'entreprise
+     * @param args lance l'application
+     */
     public static void main(String[] args) {
         launch();
     }

@@ -2,11 +2,13 @@ package fr.ua.iutlens.sae.app.controller;
 
 import java.io.IOException;
 
+import fr.ua.iutlens.sae.app.EntrepriseVenteEauApplication;
 import fr.ua.iutlens.sae.app.model.EntrepriseVenteEau;
 import fr.ua.iutlens.sae.app.model.IController;
 import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,6 +16,11 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.MenuButton;
 
+/**
+ * Classe qui gère les actions effectuées dans la vue accueil-view.
+ * @author nicolas.lapotre
+ * @see EntrepriseVenteEauApplication
+ */
 public class AccueilController implements IController {
 
 	private EntrepriseVenteEau entreprise;
@@ -34,6 +41,10 @@ public class AccueilController implements IController {
     private Label labelTitre;
     
     @FXML
+    /**
+     * Méthode qui permet de séléctionner la vue de client pour pouvoir l'afficher plus tard.
+     * @param event le dernier évènement déroulé sur la vue
+     */
     void menuClients(ActionEvent event) {
     	menu.setText("Clients");
     	prochaineVue = "../view/clients-view.fxml";
@@ -41,13 +52,21 @@ public class AccueilController implements IController {
     }
 
     @FXML
-    void menuClommandes(ActionEvent event) {
+    /**
+     * Méthode qui permet de séléctionner la vue des commandes pour pouvoir l'afficher plus tard.
+     * @param event le dernier évènement déroulé sur la vue
+     */
+    void menuCommandes(ActionEvent event) {
     	menu.setText("Commandes");
     	prochaineVue = "../view/commandes-view.fxml";
     	titre = "Visualisation des commandes de la societe";
     }
 
     @FXML
+    /**
+     * Méthode qui permet de séléctionner la vue des Stocks d'eau pour pouvoir l'afficher plus tard.
+     * @param event le dernier évènement déroulé sur la vue
+     */
     void menuStock(ActionEvent event) {
     	menu.setText("Stocks d'eau");
     	prochaineVue = "../view/stocks-eau-view.fxml";
@@ -55,6 +74,11 @@ public class AccueilController implements IController {
     }
 
     @FXML
+    /**
+     * Méthode qui lance la prochaine vue selon le choix dans le menu déroulant dans la vue
+     * @param event le dernier évènement déroulé sur la vue
+     * @throws IOException
+     */
     void visualiser(ActionEvent event) throws IOException {
     	if (prochaineVue != null) {
     		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(prochaineVue));
