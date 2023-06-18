@@ -2,6 +2,11 @@ package fr.ua.iutlens.sae.app.model;
 
 import java.util.Objects;
 
+/**
+ * Classe qui génère des instances d'employés travaillant dans une entreprise
+ * @author jules.langagne
+ * @see EntrepriseVenteEau
+ */
 public class Employe {
     @Override
 	public int hashCode() {
@@ -9,6 +14,10 @@ public class Employe {
 	}
 
 	@Override
+	/**
+	 * Méthode qui vérifie la similarité entre l'instance qui l'appelle et l'objet entré en paramètre.
+	 * @param obj L'objet comparé à l'instance qui appelle la fonction
+	 */
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -54,14 +63,16 @@ public class Employe {
 
     //Méthodes
 
-    /* Permet d'augmenter le salaire d'un employé désigné d'une prime
+    /**
+     * Permet d'augmenter le salaire d'un employé désigné d'une prime
      * @param prime la valeur que gagne le salaire de l'employé
      */
     public void augmentation(double prime){
         this.salaire += prime;
     }
 
-    /* Permet la réduction du salaire d'un employé défini
+    /**
+     * Permet la réduction du salaire d'un employé défini
      * @param reduc la valeur que perd le salaire de l'employé
      */
     public void reduction(double reduc){
@@ -71,10 +82,11 @@ public class Employe {
         }
     }
 
-    /* Affiche l'ensemble des attributs de l'objet Employé désigné
+    @Override
+    /**
+     * Affiche l'ensemble des attributs de l'objet Employé désigné
      * @return Une chaine de caractères String représentant l'ensemble des attributs de l'objet désigné.
      */
-    @Override
     public String toString(){
         return "Employé n°"+this.id+" | Nom : "+this.nom+" | Prénom : "+this.prenom+" | Contrat : "+this.contrat+" | Salaire : "+this.salaire;
     }

@@ -2,13 +2,24 @@ package fr.ua.iutlens.sae.app.model;
 
 import java.util.Objects;
 
+/**
+ * Classe qui génère des instances de stock d'eau stockée dans un entrepot
+ * @author timeo.quehen
+ * @see Eau
+ * @see Entrepot
+ */
 public class StockEau{
+	
     @Override
 	public int hashCode() {
 		return Objects.hash(eau, entrepot, quantite);
 	}
 
 	@Override
+	/**
+	 * Méthode qui vérifie la similarité entre l'instance qui l'appelle et l'objet entré en paramètre.
+	 * @param obj L'objet comparé à l'instance qui appelle la fonction
+	 */
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -52,10 +63,11 @@ public class StockEau{
 
     //Méthodes
 
-    /* Une méthode toString qui renvoie, sous forme de chaine de caractères l'ensemble des attributs de l'objet de la classe StockEau
+    @Override
+    /**
+     * Une méthode toString qui renvoie, sous forme de chaine de caractères l'ensemble des attributs de l'objet de la classe StockEau
      * @return l'ensemble des attributs de l'objet de la classe StockEau
      */
-    @Override
     public String toString(){
         return "Stock de "+this.quantite+" caisses de "+this.eau+" dans l'entrepôt "+this.entrepot+".";
     }
