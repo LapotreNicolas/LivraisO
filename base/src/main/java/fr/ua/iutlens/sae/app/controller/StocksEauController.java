@@ -40,7 +40,6 @@ public class StocksEauController implements IController {
         Parent viewContent = fxmlLoader.load();
 
         IController controller = fxmlLoader.getController();
-        EntrepriseVenteEau entreprise = new EntrepriseVenteEau("012345","Livrais'O");
         controller.setEntreprise(entreprise);
         entreprise.setController(controller);
         controller.setLabelTitre(entreprise.getNom());
@@ -61,6 +60,8 @@ public class StocksEauController implements IController {
     
     public void setEntreprise(EntrepriseVenteEau entreprise) {
     	this.entreprise = entreprise;
+    	System.out.println(entreprise.getStockGlobal());
+    	System.out.println(entreprise.getStockGlobal().getTabStockEau());
     	listeStocksEau.getItems().addAll(entreprise.getStockGlobal().getTabStockEau());
     }
     

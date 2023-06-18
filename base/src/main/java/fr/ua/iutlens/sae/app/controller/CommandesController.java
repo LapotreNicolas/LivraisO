@@ -42,7 +42,6 @@ public class CommandesController implements IController {
         Parent viewContent = fxmlLoader.load();
 
         IController controller = fxmlLoader.getController();
-        EntrepriseVenteEau entreprise = new EntrepriseVenteEau("012345","Livrais'O");
         controller.setEntreprise(entreprise);
         entreprise.setController(controller);
         controller.setLabelTitre(entreprise.getNom());
@@ -63,6 +62,7 @@ public class CommandesController implements IController {
     
     public void setEntreprise(EntrepriseVenteEau entreprise) {
     	this.entreprise = entreprise;
+    	System.out.println(entreprise.getCommandes());
     	listeCommandes.getItems().addAll(entreprise.getCommandes());
     }
     

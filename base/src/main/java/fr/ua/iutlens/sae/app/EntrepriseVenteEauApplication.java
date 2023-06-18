@@ -48,7 +48,6 @@ public class EntrepriseVenteEauApplication extends Application {
         StockEau stockEau2 = new StockEau(eau2, entrepot1, 90);
         StockEau stockEau3 = new StockEau(eau1, entrepot2, 150);
         StockEau stockEau4 = new StockEau(eau1, entrepot1, 30);
-        StockGlobal stockGlobal = new StockGlobal();
         ClientEntreprise client1 = new ClientEntreprise("07/03/2023", adresse2, "0123456789", "mujer@mail.com", "Mujer", "0123");        
         ClientParticulier client2 = new ClientParticulier("13/05/2023", adresse3, "0963852741", "louis@mail.com", "XIV", "louis");        
         ClientEtablissementPublic client3 = new ClientEtablissementPublic("12/12/2012", adresse4, "0612121212", "dooze@mail.com", "Dooze", ClientEtablissementPublic.Type.EPIC);        
@@ -84,6 +83,10 @@ public class EntrepriseVenteEauApplication extends Application {
         entreprise.enregistrerClient(client1);
         entreprise.enregistrerClient(client2);
         entreprise.enregistrerClient(client4);
+        entreprise.achatStock(stockEau4);
+        entreprise.achatStock(stockEau2);
+        entreprise.achatStock(stockEau3);
+        entreprise.achatStock(stockEau1);
         entreprise.enregistrerCommande(commande1);
         entreprise.enregistrerCommande(commande2);
         entreprise.enregistrerCommande(commande3);
