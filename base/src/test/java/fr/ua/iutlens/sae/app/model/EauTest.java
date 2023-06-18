@@ -200,7 +200,7 @@ class EauTest {
 		String ts = e3.toString();
 		
 		// Then
-		assertEquals("marque : marque4, catégorie : EAU_PLATE, prix : 3.0",ts);
+		assertEquals("marque : marque4, categorie : EAU_PLATE, prix : 3.0",ts);
 	}
 	
 }

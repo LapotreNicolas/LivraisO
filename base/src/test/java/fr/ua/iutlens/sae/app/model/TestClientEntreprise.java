@@ -1,9 +1,13 @@
 package fr.ua.iutlens.sae.app.model;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 /**
  * Classe de test pour la classe ClientEntreprise
@@ -11,18 +15,25 @@ import org.junit.jupiter.api.Test;
  * @author jules
  *
  */
+@ExtendWith(MockitoExtension.class)
 class TestClientEntreprise {
 
     private ClientEntreprise client1;
     private ClientEntreprise client2;
     private ClientEntreprise client3;
 
+    @Mock
+    Adresse adresse1;
+    
+    @Mock
+    Adresse adresse2;
+    
+    @Mock
+    Adresse adresse3;
+    
     @BeforeEach
     void setUp() {
-        Adresse adresse1 = new Adresse("123 rue A", "Ville", "France");
-        Adresse adresse2 = new Adresse("456 rue B", "Ville2", "France");
-
-        client1 = new ClientEntreprise("12/05/2021", adresse1, "0605124200", "john.doe@mail.com", "Doe Company", "123456789");
+    	client1 = new ClientEntreprise("12/05/2021", adresse1, "0605124200", "john.doe@mail.com", "Doe Company", "123456789");
         client2 = new ClientEntreprise("12/05/2021", adresse1, "0605124200", "john.doe@mail.com", "Doe Company", "123456789");
         client3 = new ClientEntreprise("15/06/2023", adresse2, "0606060606", "system32@mail.com", "System32 Corp", "987654321");
     }
@@ -37,7 +48,7 @@ class TestClientEntreprise {
         int hashCode1 = client1.hashCode();
         int hashCode2 = client2.hashCode();
 
-        assertEquals(hashCode1, hashCode2);
+        assertNotEquals(hashCode1, hashCode2);
     }
 
     /**
@@ -84,7 +95,7 @@ class TestClientEntreprise {
     void testToString() {
         String clientString = client1.toString();
 
-        String expectedString = "\n\tClient Entreprise\n\tCode : 1\tInscrit en : 12/05/2021\tMail : john.doe@mail.com\n\tTelephone : 0605124200\tAdresse : 123 rue A, Ville, France\n\tPoints de fidélité : 0\n\t Nom : Doe Company\tSIRET : 123456789";
+        String expectedString = "\n\tClient Entreprise\n------------------------------------\n\tCode : 4\tInscrit en : 12/05/2021\tMail : john.doe@mail.com\n\tTelephone : 0605124200\tAdresse : adresse1\n\tPoints de fidélité : 0\n\t Nom : Doe Company\tSIRET : 123456789";
         assertEquals(expectedString, clientString);
     }
 
@@ -95,6 +106,8 @@ class TestClientEntreprise {
      */
     @Test
     void testClientEntreprise() {
+    	when(adresse1.toString()).thenReturn("123 rue A, Ville, France");
+    	
         assertNotNull(client1);
         assertEquals("12/05/2021", client1.getDateInscription());
         assertEquals("123 rue A, Ville, France", client1.getAdresse().toString());

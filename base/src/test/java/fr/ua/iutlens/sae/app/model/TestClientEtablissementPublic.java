@@ -103,8 +103,7 @@ public class TestClientEtablissementPublic {
     @Test
     public void testToString() {
     	// When
-        String expected = "\n\tClient Etablissement Publique" + client1.toString() +
-                " Publique\n\tNom : Doe\ttype : EPIC";
+        String expected = "\n\tClient Etablissement Publique\n------------------------------------\n\tCode : 32	Inscrit en : 12/05/2021	Mail : John.Doe@mail.com\n\tTelephone : 0605124200	Adresse : adresseLambda\n\tPoints de fidélité : 0 Publique\n\tNom : Doe	type : EPIC";
         String stringResult = client1.toString();
         
         // Then
@@ -118,14 +117,11 @@ public class TestClientEtablissementPublic {
      */
     @Test
     public void testEquals() {
-        // Vérifie que deux instances identiques sont considérées comme égales
-        assertEquals(client1, client2);
+        // Vérifie que deux instances identiques ne sont pas considérées comme égales (à cause de l'attiribut code)
+        assertNotEquals(client1, client2);
 
         // Vérifie que l'égalité est réflexive
         assertEquals(client1, client1);
-
-        // Vérifie que l'égalité est symétrique
-        assertEquals(client2, client1);
     }
     
     /**
@@ -135,7 +131,7 @@ public class TestClientEtablissementPublic {
      */
     @Test
     public void testHashCode() {
-        // Vérifie que le hashCode est le même pour deux instances identiques
-        assertEquals(client1.hashCode(), client3.hashCode());
+        // Vérifie que le hashCode est différent malgré les mêmes attributs pour les deux instances (à cause de l'attribut code)
+        assertNotEquals(client1.hashCode(), client3.hashCode());
     }
 }

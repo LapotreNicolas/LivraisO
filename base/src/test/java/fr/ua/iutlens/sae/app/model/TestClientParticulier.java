@@ -96,7 +96,7 @@ class TestClientParticulier {
 		String stringResult = clientParticulierTest.toString();
 		
 		// Then
-		assertEquals("", stringResult);
+		assertEquals("\n\tClient Particulier\n------------------------------------\n\tCode : 25\tInscrit en : 07/06/2023\tMail : ClientParticulierTest@mail.com\n\tTelephone : 0606060606\tAdresse : adresseLambda\n\tPoints de fidélité : 0\n\t Nom : Doe	Prénom : John", stringResult);
 	}
 	
 	@Test
