@@ -5,12 +5,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ua.iutlens.sae.app.controller.StocksEauController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ua.iutlens.sae.app.controller.StocksEauController">
    <top>
       <Label fx:id="labelTitre" alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="752.0" text="Visualisation des stocks d'eau de la société : " BorderPane.alignment="CENTER">
          <font>
@@ -25,18 +27,18 @@
       </Label>
    </top>
    <center>
-      <SplitPane dividerPositions="0.5" prefHeight="397.0" prefWidth="750.0" BorderPane.alignment="CENTER">
+      <SplitPane dividerPositions="0.25" prefHeight="397.0" prefWidth="750.0" BorderPane.alignment="CENTER">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <ListView fx:id="listeStocksEau" prefHeight="400.0" prefWidth="375.0" />
+                  <ListView fx:id="listeStocksEau" onMouseClicked="#afficherSelection" prefHeight="400.0" prefWidth="200.0" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <VBox layoutX="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="375.0">
+                  <VBox layoutX="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0">
                      <children>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
+                        <VBox prefHeight="150.0" prefWidth="600.0">
                            <children>
                               <Label text="Eau stockée :" textAlignment="JUSTIFY">
                                  <VBox.margin>
@@ -46,17 +48,38 @@
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="infosEau">
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" top="10.0" />
+                                       </VBox.margin>
+                                       <children>
+                                          <Label fx:id="infosEau">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="ajoutEau" prefHeight="25.0" prefWidth="0.0" promptText="marque" visible="false">
+                                             <HBox.margin>
+                                                <Insets right="25.0" />
+                                             </HBox.margin></TextField>
+                                          <TextField fx:id="ajoutEau1" prefHeight="25.0" prefWidth="0.0" promptText="categorie" visible="false">
+                                             <HBox.margin>
+                                                <Insets right="25.0" />
+                                             </HBox.margin>
+                                          </TextField>
+                                          <TextField fx:id="ajoutEau2" prefHeight="25.0" prefWidth="0.0" promptText="prix" visible="false" />
+                                       </children>
+                                    </HBox>
+                                 </children>
                                  <VBox.margin>
-                                    <Insets left="50.0" top="10.0" />
+                                    <Insets left="50.0" />
                                  </VBox.margin>
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
+                              </VBox>
                            </children>
                         </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
+                        <VBox prefHeight="150.0" prefWidth="600.0">
                            <children>
                               <Label text="Quantité d'eau stockée :">
                                  <VBox.margin>
@@ -66,17 +89,22 @@
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="infosQuantite">
+                              <HBox prefHeight="100.0" prefWidth="200.0">
                                  <VBox.margin>
-                                    <Insets left="50.0" top="10.0" />
+                                    <Insets bottom="10.0" left="50.0" top="10.0" />
                                  </VBox.margin>
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
+                                 <children>
+                                    <Label fx:id="infosQuantite">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="ajoutQuantite" prefWidth="300.0" promptText="quantite" visible="false" />
+                                 </children>
+                              </HBox>
                            </children>
                         </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
+                        <VBox prefHeight="250.0" prefWidth="600.0">
                            <children>
                               <Label text="Entrepôt de stockage :">
                                  <VBox.margin>
@@ -86,14 +114,68 @@
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="infosEntrepot">
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" top="10.0" />
+                                       </VBox.margin>
+                                       <children>
+                                          <Label fx:id="infosEntrepot">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="ajoutEntrepot" prefHeight="25.0" prefWidth="0.0" promptText="code" visible="false">
+                                             <HBox.margin>
+                                                <Insets right="25.0" />
+                                             </HBox.margin></TextField>
+                                          <TextField fx:id="ajoutEntrepot1" prefHeight="25.0" prefWidth="0.0" promptText="nom de l'entreprise" visible="false" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <Label fx:id="infosAdresse">
+                                             <font>
+                                                <Font size="13.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="ajoutAdresse" prefHeight="25.0" prefWidth="0.0" promptText="ex : 11 bis" visible="false">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </TextField>
+                                          <TextField fx:id="ajoutAdresse1" prefHeight="25.0" prefWidth="0.0" promptText="ex : Avenue des Fusillés" visible="false">
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </TextField>
+                                          <TextField fx:id="ajoutAdresse3" prefHeight="25.0" prefWidth="0.0" promptText="ex : Arras" visible="false">
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </TextField>
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <TextField fx:id="ajoutAdresse4" prefHeight="25.0" prefWidth="200.0" promptText="ex : Pas-de-Calais" visible="false">
+                                             <HBox.margin>
+                                                <Insets right="25.0" />
+                                             </HBox.margin>
+                                          </TextField>
+                                          <TextField fx:id="ajoutAdresse2" prefHeight="25.0" prefWidth="75.0" promptText="ex : 62041" visible="false">
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </TextField>
+                                       </children>
+                                    </HBox>
+                                 </children>
                                  <VBox.margin>
-                                    <Insets left="50.0" top="10.0" />
+                                    <Insets left="50.0" />
                                  </VBox.margin>
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
+                              </VBox>
                            </children>
                         </VBox>
                      </children>
@@ -103,10 +185,29 @@
       </SplitPane>
    </center>
    <bottom>
-      <Button mnemonicParsing="false" onAction="#retour" text="Retour" BorderPane.alignment="CENTER_LEFT">
-         <BorderPane.margin>
-            <Insets bottom="15.0" left="20.0" top="15.0" />
-         </BorderPane.margin>
-      </Button>
+      <HBox prefHeight="50.0" prefWidth="750.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#retour" text="Retour">
+               <HBox.margin>
+                  <Insets left="50.0" right="30.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+            <Label fx:id="erreur" contentDisplay="CENTER" prefHeight="30.0" prefWidth="400.0" textAlignment="JUSTIFY">
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </Label>
+            <Button fx:id="ajouter" mnemonicParsing="false" onAction="#ajouterClique" text="Ajouter">
+               <HBox.margin>
+                  <Insets left="30.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="supprimer" mnemonicParsing="false" onAction="#supprimerClique" text="Supprimer">
+               <HBox.margin>
+                  <Insets left="20.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
    </bottom>
 </BorderPane>

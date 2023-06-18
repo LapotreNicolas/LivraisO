@@ -101,6 +101,6 @@ public class Eau {
      * @return l'ensemble des attributs de l'objet de la classe Eau
      */
     public String toString() {
-        return "marque : " + marque + ", catégorie : " + catEau + ", prix : " + prix;
+        return "marque : " + marque + ", categorie : " + catEau + ", prix : " + prix;
     }
 }

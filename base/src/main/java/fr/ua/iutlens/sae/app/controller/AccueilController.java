@@ -37,21 +37,21 @@ public class AccueilController implements IController {
     void menuClients(ActionEvent event) {
     	menu.setText("Clients");
     	prochaineVue = "../view/clients-view.fxml";
-    	titre = "Visualisation des clients de la société";
+    	titre = "Visualisation des clients de la societe";
     }
 
     @FXML
     void menuClommandes(ActionEvent event) {
     	menu.setText("Commandes");
     	prochaineVue = "../view/commandes-view.fxml";
-    	titre = "Visualisation des commandes de la société";
+    	titre = "Visualisation des commandes de la societe";
     }
 
     @FXML
     void menuStock(ActionEvent event) {
     	menu.setText("Stocks d'eau");
     	prochaineVue = "../view/stocks-eau-view.fxml";
-    	titre = "Visualisation des stocks d'eau de la société";
+    	titre = "Visualisation des stocks d'eau de la societe";
     }
 
     @FXML
