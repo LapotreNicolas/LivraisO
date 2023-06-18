@@ -42,6 +42,11 @@ public class Commande implements RemisesPossibles {
             }
         }
     }
+    
+    public ObservableList<LigneDeCommande> getCommandes() {
+    	return this.commandes;
+    }
+    
     /**
      * Modifie la ligne de commande précisée
      * @param position position de la ligne de commande demandée, ligneDeCommande la commande qu'il faut modifier

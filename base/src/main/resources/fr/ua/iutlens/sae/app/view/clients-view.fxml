@@ -31,7 +31,7 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <ListView fx:id="listeClients" onMouseClicked="#afficherSelection" prefHeight="400.0" prefWidth="118.0" />
+                  <ListView fx:id="listeClients" onMouseClicked="#afficherSelection" prefHeight="400.0" prefWidth="800.0" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">

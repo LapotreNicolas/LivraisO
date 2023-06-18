@@ -31,7 +31,7 @@
                     <items>
                       <MenuItem mnemonicParsing="false" onAction="#menuStock" text="Stocks d'eau" />
                       <MenuItem mnemonicParsing="false" onAction="#menuClients" text="Clients" />
-                        <MenuItem mnemonicParsing="false" onAction="#menuClommandes" text="Commandes" />
+                        <MenuItem mnemonicParsing="false" onAction="#menuCommandes" text="Commandes" />
                     </items>
                      <font>
                         <Font size="15.0" />
