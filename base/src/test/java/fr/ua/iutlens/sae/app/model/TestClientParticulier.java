@@ -7,9 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import fr.ua.iutlens.sae.app.model.Adresse;
-import fr.ua.iutlens.sae.app.model.ClientParticulier;
-
 import org.mockito.Mock;
 
 /**
@@ -30,9 +27,9 @@ class TestClientParticulier {
 	 }
 	 
 	/**
-	 * Depuis la class ClientParticulier, verifie la method getNom
-	 * @see ClientParticulier
-	 * {@link fr.ua.iutlens.sae.app.model.ClientParticulier#getNom()}
+	 * Depuis la class {@link ClientParticulier}
+	 * <br>
+	 * Verifie la methode {@link ClientParticulier#getNom()}
 	 */
 	@Test
 	void testGetNom() {
@@ -43,9 +40,9 @@ class TestClientParticulier {
 	}
 	
 	/**
-	 * Depuis la class ClientParticulier, verifie la method getPrenom
-	 * @see ClientParticulier
-	 * {@link fr.ua.iutlens.sae.app.model.ClientParticulier#getPrenom()}
+	 * Depuis la class {@link ClientParticulier}
+	 * <br>
+	 * Vérifie la methode {@link ClientParticulier#getPrenom()}
 	 */
 	@Test
 	void testGetPrenom() {
@@ -56,13 +53,9 @@ class TestClientParticulier {
 	}
 	
 	/**
-<<<<<<< HEAD
-	 * Depuis la class ClientParticulier, vérifie la method getTypeClient
-=======
-	 * Depuis la class ClientParticulier, verifie la method getTypeClient
-	 * @see ClientParticulier
-	 * {@link fr.ua.iutlens.sae.app.model.ClientParticulier#getTypeClient()}
->>>>>>> 6eff67c5b3d4811ae76507f621a4cb05a3962ee3
+	 * Depuis la class {@link ClientParticulier}
+	 * <br>
+	 * Vérifie la methode {@link ClientParticulier#getTypeClient()}
 	 */
 	@Test
 	void testGetTypeClient() {
@@ -73,10 +66,10 @@ class TestClientParticulier {
 	}
 	
 	/**
-	 * Depuis la class ClientParticluier, verifie la method ajoutPointsFidelite
-	 * en securisant le calcul
-	 * @see ClientParticulier
-	 * {@link fr.ua.iutlens.sae.app.model.ClientParticulier#ajoutPointsFidelite(double)}
+	 * Depuis la class {@link ClientParticluier}
+	 * <br>
+	 * Verifie la methode {@link ClientParticulier#ajoutPointsFidelite(double)}
+	 * en verifiant le calcul
 	 */
 	@Test
 	void testAjoutPointsFidelite() {
@@ -90,5 +83,29 @@ class TestClientParticulier {
 		// Then
 		assertEquals(10, ptsFidelite);
 		
+	}
+	
+	/**
+	 * Depuis la class {@link ClientParticulier}
+	 * <br>
+	 * Vérifie le résultat de la méthode surchargée {@link ClientParticulier#toString()}
+	 */
+	@Test
+	void testToString() {
+		// WHen
+		String stringResult = clientParticulierTest.toString();
+		
+		// Then
+		assertEquals("", stringResult);
+	}
+	
+	@Test
+	void testToHash() {
+		// 
+	}
+	
+	@Test
+	void testEquals() {
+		//
 	}
 }
