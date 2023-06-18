@@ -5,8 +5,10 @@ import java.util.Objects;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-
-
+/**
+ * Classe qui génère des instances de commandes effectuées à l'entreprise
+ * @author timeo.quehen
+ */
 public class Commande implements RemisesPossibles {
     private static final int MAX_COMMANDES = 100;
     private ObservableList<LigneDeCommande> commandes;
@@ -20,14 +22,16 @@ public class Commande implements RemisesPossibles {
     }
 
     //Méthodes
-    /* Ajoute une commande
+    /**
+     * Ajoute une commande
      * @param commande la commande à ajouter
      */
     public void ajouterCommande(LigneDeCommande commande) {
         this.commandes.add(commande);
         pos++;
     }
-    /* Ajoutes plusieurs commandes
+    /**
+     * Ajoutes plusieurs commandes
      * @param commandes le tableau de commandes à ajouter
      */
     public void ajouterCommandes(ObservableList<LigneDeCommande> commandes) {
@@ -38,7 +42,8 @@ public class Commande implements RemisesPossibles {
             }
         }
     }
-    /* Modifie la ligne de commande précisée
+    /**
+     * Modifie la ligne de commande précisée
      * @param position position de la ligne de commande demandée, ligneDeCommande la commande qu'il faut modifier
      */
     public void modifierCommande(int position, LigneDeCommande commande) {
@@ -46,7 +51,8 @@ public class Commande implements RemisesPossibles {
             this.commandes.add(position, commande);
         }
     }
-    /* Calcule la remise appliquée sur un achat 
+    /**
+     * Calcule la remise appliquée sur un achat 
      * @param client le client affecté par la remise
      * @return solde la remise appliquée sur l'achat du client
      * @see client
@@ -67,7 +73,8 @@ public class Commande implements RemisesPossibles {
         return solde;
     }
     
-    /* méthode calculant le nombre de bouteilles offertes à un client
+    /**
+     * méthode calculant le nombre de bouteilles offertes à un client
      * @param nbBouteilles le nombre de bouteilles achetées par un client, client le client qui achète les bouteilles
      * @return remise le nombre de bouteilles offertes au client
      * @see client
@@ -85,7 +92,8 @@ public class Commande implements RemisesPossibles {
         return remise;
     }
 
-    /* Calcul le montant total de la remise et le renvois
+    /**
+     * Calcule le montant total de la remise et le renvois
      * @param client le client effectuant l'achat
      * @return le montant total
      * @see Client
@@ -97,7 +105,12 @@ public class Commande implements RemisesPossibles {
         }
         return (prixTotal*(montantDeLaRemise(client)));
     }
-@Override
+    
+    @Override
+    /**
+     * Méthode qui transcrit les attributs de l'instance qui appelle la fonction en chaine de caractères
+     * @return une chaine de caractères qui correspond aux attributs de l'instance quia appelle la fonction 
+     */
     public String toString() {
         String informations = "Tableau des Commandes :";
         if (pos == 0) informations += "\n\tpas de commande";
@@ -113,6 +126,10 @@ public int hashCode() {
 }
 
 @Override
+/**
+ * Méthode qui vérifie la similarité entre l'instance qui l'appelle et l'objet entré en paramètre.
+ * @param obj L'objet comparé à l'instance qui appelle la fonction
+ */
 public boolean equals(Object obj) {
 	if (this == obj)
 		return true;

@@ -13,6 +13,10 @@ public class Entrepot {
 	}
 
 	@Override
+	/**
+	 * Méthode qui vérifie la similarité entre l'instance qui l'appelle et l'objet entré en paramètre.
+	 * @param obj L'objet comparé à l'instance qui appelle la fonction
+	 */
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -24,7 +28,8 @@ public class Entrepot {
 		return code == other.code;
 	}
 
-	/* Constructeur de la classe Entrepot, il initalise pour chaque instance son code, son nom et son adresse selon les valeurs saisies.
+	/**
+	 * Constructeur de la classe Entrepot, il initalise pour chaque instance son code, son nom et son adresse selon les valeurs saisies.
      * @param code le code (identifiant) de l'entrepot
      * @param nom le nom de l'entrepot
      * @param adresse l'adresse de l'entrepot. l'adresse est une instance de la classe Adresse
@@ -38,21 +43,24 @@ public class Entrepot {
     
     //GETTERS
     
-    /* Méthode qui renvois un entier code, correspondant au code de l'entrepot
+    /**
+     * Méthode qui renvois un entier code, correspondant au code de l'entrepot
      * @return le code de l'entrepot
      */
     public int getCode(){
         return code;
     }
     
-    /* Méthode qui renvois un String correspondant au nom de l'entreprise
+    /**
+     * Méthode qui renvois un String correspondant au nom de l'entreprise
      * @return le nom de l'entreprise
      */
     public String getNom(){
         return nom;
     }
     
-    /* Méthode qui renvois l'adresse de l'entrepot (sa localisation) 
+    /**
+     * Méthode qui renvois l'adresse de l'entrepot (sa localisation) 
      * @return l'adresse de l'entrepot. L'adresse est une instance de la classe Adresse.
      * @see Adresse
      */
@@ -62,10 +70,11 @@ public class Entrepot {
     
     //Méthodes
 
-    /* Une méthode toString qui renvoie, sous forme de chaine de caractères l'ensemble des attributs de l'objet de la classe Entrepot
+    @Override
+    /**
+     * Une méthode toString qui renvoie, sous forme de chaine de caractères l'ensemble des attributs de l'objet de la classe Entrepot
      * @return l'ensemble des attributs de l'objet de la classe Entrepot
      */
-    @Override
     public String toString() {
         return "code : " + code + ", nom : " + nom + ", adresse : " + adresse;
     }
