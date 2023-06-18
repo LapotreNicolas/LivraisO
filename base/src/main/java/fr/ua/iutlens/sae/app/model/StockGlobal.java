@@ -5,6 +5,11 @@ import java.util.Objects;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+/**
+ * Classe qui génère des instances de tableau gérant des stocks d'eau.
+ * @author nicolas.lapotre
+ * @see StockEau
+ */
 public class StockGlobal {
     public static final int MAX_STOCK_EAU = 100;
     private ObservableList<StockEau> tabStockEau;
@@ -21,7 +26,8 @@ public class StockGlobal {
 
     //Méthodes
     
-    /* Méthode qui recherche l'identifiant de l'objet stockEau dans le tableau de stock.
+    /**
+     * Méthode qui recherche l'identifiant de l'objet stockEau dans le tableau de stock.
      * Une fois trouvé, il est renvoyé. Sinon, renvoie -1
      * @param stockEau l'objet recherché de la classe StockEau
      * @return la position de l'objet recherché dans le tableau. s'il n'est pas présent, renvoie -1
@@ -33,7 +39,8 @@ public class StockGlobal {
         return i;
     }
 
-    /* Méthode qui ajoute un objet StockEau au tableau de StockGlobal. S'il n'est pas présent, est ajouté à la fin.
+    /**
+     * Méthode qui ajoute un objet StockEau au tableau de StockGlobal. S'il n'est pas présent, est ajouté à la fin.
      * Sinon la quantité est modifié, en ajoitant la quantité de l'objet en paramètre.
      * @param stockEau l'objet que l'on souhaite ajouter
      */
@@ -43,7 +50,8 @@ public class StockGlobal {
         else this.tabStockEau.get(indice).setQuantite(this.tabStockEau.get(indice).getQuantite() + stockEau.getQuantite());
     }
 
-    /* Recherche et supprime du tableau l'objet StockEau saisi en paramètre
+    /**
+     * Recherche et supprime du tableau l'objet StockEau saisi en paramètre
      * @param stockEau un objet de la classe Stockeau
      */
     public void supprimer(StockEau stockEau) {
@@ -53,7 +61,8 @@ public class StockGlobal {
     	}
     }
 
-    /* Réduit la quantité du StockEau à l'indice i saisi en paramètre d'une quantité également saisie en paramètre. 
+    /**
+     * Réduit la quantité du StockEau à l'indice i saisi en paramètre d'une quantité également saisie en paramètre. 
      * @param indice          un indice du tableau de StockGlobal
      * @param quantiteEnMoins la quantite à retirer du stock à l'indice i
      */
@@ -63,7 +72,8 @@ public class StockGlobal {
         else this.tabStockEau.get(indice).setQuantite(quantiteRestante);
     }
 
-    /* Trie le tableau selon booléen saisi en paramètre. Possède une surcharge pour effectuer un tri croissant par défaut.
+    /**
+     * Trie le tableau selon booléen saisi en paramètre. Possède une surcharge pour effectuer un tri croissant par défaut.
      * @param croissante le façon de trier le tableau : si true, le trie en ordre croissant. Si false, le trie en ordre décroissant.
      */
     public void trier(boolean croissante) {
@@ -79,6 +89,9 @@ public class StockGlobal {
         }
     }
     
+    /**
+     * Méthode qui trie le tableau de stock d'eau par ordre croissant.
+     */
     public void trier() {
         trier(true);
     }
@@ -89,6 +102,10 @@ public class StockGlobal {
 	}
 
 	@Override
+	/**
+	 * Méthode qui vérifie la similarité entre l'instance qui l'appelle et l'objet entré en paramètre.
+	 * @param obj L'objet comparé à l'instance qui appelle la fonction
+	 */
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -100,10 +117,12 @@ public class StockGlobal {
 		return Objects.equals(tabStockEau, other.tabStockEau);
 	}
 
-	/* Une méthode toString qui renvoie, sous forme de chaine de caractères l'ensemble des attributs de l'objet de la classe StockGlobal
+	
+    @Override
+    /**
+	 * Une méthode toString qui renvoie, sous forme de chaine de caractères l'ensemble des attributs de l'objet de la classe StockGlobal
      * @return l'ensemble des attributs de l'objet de la classe StockGlobal
      */
-    @Override
     public String toString() {
         String informations = "Tableau des Stocks d'Eau :";
         if (position == 0) informations += "\n\tpas de stock";

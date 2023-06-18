@@ -2,6 +2,10 @@ package fr.ua.iutlens.sae.app.model;
 
 import java.util.Objects;
 
+/**
+ * Classe qui génère une adresse. elle est composée d'une commune, qui est une classe imbriquée de Adresse. 
+ * @author timeo.quehen
+ */
 public class Adresse {
     @Override
 	public int hashCode() {
@@ -9,6 +13,10 @@ public class Adresse {
 	}
 
 	@Override
+	/**
+	 * Méthode qui vérifie la similarité entre l'instance qui l'appelle et l'objet entré en paramètre.
+	 * @param obj L'objet comparé à l'instance qui appelle la fonction
+	 */
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -24,7 +32,7 @@ public class Adresse {
 	private String num;
     private String voie;
     private Commune commune;
-    /* Constructeur d'objets appartenant à la classe Adresse.
+    /** Constructeur d'objets appartenant à la classe Adresse.
      * @param num            le numéro dans la rue 
      * @param voie           la rue de l'adresse
      * @param insee          le code insee de la commune
@@ -38,6 +46,10 @@ public class Adresse {
         this.commune = new Commune(insee, nom, nomDepartement);
     }
 
+    /**
+     * Classe imbriquée de Adresse qui contribue à la création de ses instances.
+     * @author gralf
+     */
     protected static class Commune{
         private String insee;
         @Override
@@ -46,6 +58,10 @@ public class Adresse {
 		}
 
 		@Override
+		/**
+		 * Méthode qui vérifie la similarité entre l'instance qui l'appelle et l'objet entré en paramètre.
+		 * @param obj L'objet comparé à l'instance qui appelle la fonction
+		 */
 		public boolean equals(Object obj) {
 			if (this == obj)
 				return true;
@@ -60,7 +76,7 @@ public class Adresse {
 
 		private String nom;
         private String nomDepartement;
-        /* Constructeur de la sous-classe Commune
+        /** Constructeur de la sous-classe Commune
          * @param insee          le code insee de la commune
          * @param nom            le nom de la commune
      	 * @param nomDepartement le nom du département de la commune
@@ -74,7 +90,7 @@ public class Adresse {
         
         //Méthode
         
-        /* Une méthode toString qui renvoie, sous forme de chaine de caractères l'ensemble des attributs de l'objet de la classe Commune
+        /** Une méthode toString qui renvoie, sous forme de chaine de caractères l'ensemble des attributs de l'objet de la classe Commune
          * @return l'ensemble des attributs de l'objet de la classe Commune
          */
         @Override
@@ -85,21 +101,21 @@ public class Adresse {
     
     //GETTERS
     
-    /* Renvois un String correspondant au numéro de rue de l'adresse
+    /** Renvois un String correspondant au numéro de rue de l'adresse
      * @return le numéro de rue de l'adresse
      */
     public String getNum(){
         return num;
     }
     
-    /* Renvois un String correspondant à la rue de l'adresse
+    /** Renvois un String correspondant à la rue de l'adresse
      * @return la rue de l'adresse
      */
     public String getVoie(){
         return voie;
     }
     
-    /* Renvois une instance de Commune correspondant à la commune de l'adresse
+    /** Renvois une instance de Commune correspondant à la commune de l'adresse
      * La commune est une sous-classe de la classe Adresse qui est définie par son insee, son nom et son département
      * @return les attributs de la commune, instance de la sous-classe Commune de la classe Adresse
      */
@@ -107,21 +123,21 @@ public class Adresse {
         return commune;
     }
     
-    /* Renvois un String correspondant à l'insee (identifiant) de la commune
+    /** Renvois un String correspondant à l'insee (identifiant) de la commune
      * @return l'insee de la commune
      */
     public String getInsee(){
         return commune.insee;
     }
     
-    /* Renvois un String correspondant au nom de la commune
+    /** Renvois un String correspondant au nom de la commune
      * @return le nom de la commune
      */
     public String getNom(){
         return commune.nom;
     }
     
-    /* Renvois un String correspondant au nom du département de la commune
+    /** Renvois un String correspondant au nom du département de la commune
      * @return le nom du département de la commune
      */
     public String getNomDepartement(){
@@ -130,7 +146,7 @@ public class Adresse {
 
     //Méthodes
     
-    /* Une méthode toString qui renvoie, sous forme de chaine de caractères l'ensemble des attributs de l'objet de la classe Adresse
+    /** Une méthode toString qui renvoie, sous forme de chaine de caractères l'ensemble des attributs de l'objet de la classe Adresse
      * @return l'ensemble des attributs de l'objet de la classe Adresse
      */
     @Override

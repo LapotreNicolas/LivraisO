@@ -2,6 +2,10 @@ package fr.ua.iutlens.sae.app.model;
 
 import java.util.Objects;
 
+/**
+ * Classe qui génère des instances d'eau.
+ * @author nicolas.lapotre
+ */
 public class Eau {
 
     @Override
@@ -10,6 +14,10 @@ public class Eau {
 	}
 
 	@Override
+	/**
+	 * Méthode qui vérifie la similarité entre l'instance qui l'appelle et l'objet entré en paramètre.
+	 * @param obj L'objet comparé à l'instance qui appelle la fonction
+	 */
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -28,7 +36,8 @@ public class Eau {
     private Categorie catEau;
     private double prix;
 
-    /* Le constructeur de la classe Eau.
+    /**
+     * Le constructeur de la classe Eau.
      * Chaque objet possède comme attribut un identifiant, une marque, une catégorie et un prix.
      * L'identifiant s'auto-incrémente.  
      * @param marque la marque de l'eau
@@ -44,28 +53,32 @@ public class Eau {
 
     // Getters
     
-    /* Renvoie l'identifiant de l'objet de la classe Eau
+    /**
+     * Renvoie l'identifiant de l'objet de la classe Eau
      * @return l'identifiant de l'objet
      */
     public int getIdentifiant(){
         return identifiant;
     }
     
-    /* Renvoie la marque de l'objet de la classe Eau
+    /**
+     * Renvoie la marque de l'objet de la classe Eau
      * @return la marque de l'objet
      */
     public String getMarque(){
         return marque;
     }
     
-    /* Renvoie la catégorie de l'objet de la classe Eau
+    /**
+     * Renvoie la catégorie de l'objet de la classe Eau
      * @return la catégorie de l'objet
      */
     public Categorie getCatEau(){
         return catEau;
     }
     
-    /* Renvoie le prix de l'objet de la classe Eau
+    /**
+     * Renvoie le prix de l'objet de la classe Eau
      * @return le prix de l'objet
      */
     public double getPrix(){
@@ -74,17 +87,19 @@ public class Eau {
 
     // Setter
     
-    /* Modifie le prix de l'objet de la classe Eau
+    /**
+     * Modifie le prix de l'objet de la classe Eau
      * @param prix le nouveau prix de l'objet
      */
     public void setPrix(double prix) {
         this.prix = prix;
     }
 
-    /* Une méthode toString qui renvoie, sous forme de chaine de caractères l'ensemble des attributs de l'objet de la classe Eau
+    @Override
+    /**
+     * Une méthode toString qui renvoie, sous forme de chaine de caractères l'ensemble des attributs de l'objet de la classe Eau
      * @return l'ensemble des attributs de l'objet de la classe Eau
      */
-    @Override
     public String toString() {
         return "marque : " + marque + ", catégorie : " + catEau + ", prix : " + prix;
     }
