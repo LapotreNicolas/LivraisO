@@ -8,7 +8,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import fr.ua.iutlens.sae.app.controller.AccueilController;
 import fr.ua.iutlens.sae.app.model.Adresse;
 import fr.ua.iutlens.sae.app.model.ClientEntreprise;
 import fr.ua.iutlens.sae.app.model.ClientEtablissementPublic;
@@ -21,7 +20,6 @@ import fr.ua.iutlens.sae.app.model.EntrepriseVenteEau;
 import fr.ua.iutlens.sae.app.model.IController;
 import fr.ua.iutlens.sae.app.model.LigneDeCommande;
 import fr.ua.iutlens.sae.app.model.StockEau;
-import fr.ua.iutlens.sae.app.model.StockGlobal;
 
 public class EntrepriseVenteEauApplication extends Application {
 
@@ -41,8 +39,7 @@ public class EntrepriseVenteEauApplication extends Application {
         Adresse adresse4 = new Adresse("20", "Rue Alphonse Daudet", "62753", "Saint-Laurent-Blangy", "Pas-de-Calais");
         Adresse adresse5 = new Adresse("122", "Rue d'Arras", "62399", "Habarcq", "Pas-de-Calais");
         Adresse adresse6 = new Adresse("13 Ter", "Rue Lamartine", "62041", "Arras", "Pas-de-Calais");
-        Adresse adresse7 = new Adresse("51", "Rue de la Plage", "80649", "Quend", "Somme");
-        Entrepot entrepot1 = new Entrepot(1234, "Seno", adresse7);
+        Entrepot entrepot1 = new Entrepot(1234, "Seno", adresse6);
         Entrepot entrepot2 = new Entrepot(9876, "Ones", adresse1);
         StockEau stockEau1 = new StockEau(eau1, entrepot2, 120);
         StockEau stockEau2 = new StockEau(eau2, entrepot1, 90);

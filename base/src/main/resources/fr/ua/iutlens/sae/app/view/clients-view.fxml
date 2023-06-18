@@ -5,12 +5,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ua.iutlens.sae.app.controller.ClientsController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ua.iutlens.sae.app.controller.ClientsController">
    <top>
       <Label fx:id="labelTitre" alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="752.0" text="Visualisation des clients de la société : " BorderPane.alignment="CENTER">
          <font>
@@ -29,14 +31,14 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <ListView fx:id="listeClients" prefHeight="400.0" prefWidth="375.0" />
+                  <ListView fx:id="listeClients" onMouseClicked="#afficherSelection" prefHeight="400.0" prefWidth="375.0" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
                   <VBox layoutX="-1.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="394.0" prefWidth="373.0">
                      <children>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
+                        <VBox prefWidth="100.0">
                            <children>
                               <Label text="Code du client :" textAlignment="JUSTIFY">
                                  <VBox.margin>
@@ -46,7 +48,32 @@
                                     <Font size="15.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="infosCode">
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label fx:id="infosCode">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField visible="false" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="50.0" />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox prefWidth="375.0">
+                           <children>
+                              <Label text="Type de client :" textAlignment="JUSTIFY">
+                                 <VBox.margin>
+                                    <Insets left="50.0" top="10.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="infosTypeClient">
                                  <VBox.margin>
                                     <Insets left="50.0" top="7.0" />
                                  </VBox.margin>
@@ -56,7 +83,7 @@
                               </Label>
                            </children>
                         </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
+                        <VBox prefWidth="100.0">
                            <children>
                               <Label text="Date de l'inscription :">
                                  <VBox.margin>
@@ -76,7 +103,7 @@
                               </Label>
                            </children>
                         </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
+                        <VBox prefWidth="100.0">
                            <children>
                               <Label text="Adresse :">
                                  <VBox.margin>
@@ -96,7 +123,7 @@
                               </Label>
                            </children>
                         </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
+                        <VBox prefWidth="100.0">
                            <children>
                               <Label text="Téléphone :">
                                  <VBox.margin>
@@ -116,7 +143,7 @@
                               </Label>
                            </children>
                         </VBox>
-                        <VBox prefHeight="71.0" prefWidth="375.0">
+                        <VBox prefWidth="375.0">
                            <children>
                               <Label text="Mail :">
                                  <VBox.margin>
@@ -136,7 +163,7 @@
                               </Label>
                            </children>
                         </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
+                        <VBox prefWidth="100.0">
                            <children>
                               <Label layoutX="60.0" layoutY="30.0" text="Points de Fidélité :">
                                  <font>
@@ -163,10 +190,24 @@
       </SplitPane>
    </center>
    <bottom>
-      <Button mnemonicParsing="false" onAction="#retour" text="Retour" BorderPane.alignment="CENTER_LEFT">
-         <BorderPane.margin>
-            <Insets bottom="15.0" left="20.0" top="15.0" />
-         </BorderPane.margin>
-      </Button>
+      <HBox prefHeight="50.0" prefWidth="750.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#retour" text="Retour">
+               <HBox.margin>
+                  <Insets left="50.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="ajouter" mnemonicParsing="false" onAction="#ajouterClique" text="Ajouter">
+               <HBox.margin>
+                  <Insets left="450.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="supprimer" mnemonicParsing="false" onAction="#supprimerClique" text="Supprimer">
+               <HBox.margin>
+                  <Insets left="20.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
    </bottom>
 </BorderPane>

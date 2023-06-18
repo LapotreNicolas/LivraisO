@@ -6,7 +6,6 @@ import fr.ua.iutlens.sae.app.model.Commande;
 import fr.ua.iutlens.sae.app.model.EntrepriseVenteEau;
 import fr.ua.iutlens.sae.app.model.IController;
 import fr.ua.iutlens.sae.app.model.LigneDeCommande;
-import fr.ua.iutlens.sae.app.model.StockEau;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -62,7 +61,6 @@ public class CommandesController implements IController {
     
     public void setEntreprise(EntrepriseVenteEau entreprise) {
     	this.entreprise = entreprise;
-    	System.out.println(entreprise.getCommandes());
     	listeCommandes.getItems().addAll(entreprise.getCommandes());
     }
     

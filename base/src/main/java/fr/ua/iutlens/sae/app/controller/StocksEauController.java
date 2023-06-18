@@ -60,8 +60,6 @@ public class StocksEauController implements IController {
     
     public void setEntreprise(EntrepriseVenteEau entreprise) {
     	this.entreprise = entreprise;
-    	System.out.println(entreprise.getStockGlobal());
-    	System.out.println(entreprise.getStockGlobal().getTabStockEau());
     	listeStocksEau.getItems().addAll(entreprise.getStockGlobal().getTabStockEau());
     }
     

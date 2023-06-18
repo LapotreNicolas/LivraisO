@@ -62,7 +62,7 @@ public abstract class Client{
     public double getResteAchatFidel(){return this.resteAchatFidel;}
     
     public abstract String getTypeClient();
-
+    
     //SETTERS
     
     public void setAdresse(Adresse adresse){this.adresse = adresse;}
@@ -88,7 +88,7 @@ public abstract class Client{
      * @param achat le prix de l'achat
      */
     public abstract void ajoutPointsFidelite(double achat);
-
+    
     /* Une méthode toString qui renvoie, sous forme de chaine de caractères l'ensemble des attributs de l'objet de la classe Client
      * @return l'ensemble des attributs de l'objet de la classe Client
      */
