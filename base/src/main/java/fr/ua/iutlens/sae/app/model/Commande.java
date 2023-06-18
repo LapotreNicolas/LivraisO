@@ -10,6 +10,8 @@ import javafx.collections.ObservableList;
  * @author timeo.quehen
  */
 public class Commande implements RemisesPossibles {
+	private static int compteur = 0;
+    private int code;
     private static final int MAX_COMMANDES = 100;
     private ObservableList<LigneDeCommande> commandes;
     private int pos;
@@ -17,10 +19,17 @@ public class Commande implements RemisesPossibles {
     //CONSTRUCTEUR
     
     public Commande() {
+    	this.code = compteur++;
         this.commandes = FXCollections.observableArrayList();
         this.pos = 0;
     }
 
+    // GETTER
+    
+    public int getCode() {
+		return this.code;
+	}
+    
     //Méthodes
     /**
      * Ajoute une commande

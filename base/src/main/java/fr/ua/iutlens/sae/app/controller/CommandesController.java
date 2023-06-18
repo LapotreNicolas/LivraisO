@@ -180,7 +180,7 @@ public class CommandesController implements IController {
 	    				if (empty || (ligne == null)) {
 	    					setText(null);
 	    				} else {
-	    					setText("Numero commande : "+ ligne.hashCode());
+	    					setText("Numero commande : "+ ligne.getCode());
 	    				}
 	    			}
 	    		};
@@ -328,7 +328,7 @@ public class CommandesController implements IController {
     				if (empty || (commande == null)) {
     					setText(null);
     				} else {
-    					setText("Numero commande : "+ commande.hashCode());
+    					setText("Numero commande : "+ commande.getCode());
     				}
     			}
     		};

@@ -7,6 +7,8 @@ import java.util.Objects;
  * @author nicolas.lapotre
  */
 public class LigneDeCommande {
+	private static int compteur = 0;
+    private int code;
     private Eau eau;
     private int quantite;
 
@@ -40,11 +42,15 @@ public class LigneDeCommande {
      * @see eau
      */
     public LigneDeCommande(Eau eau, int quantite) {
+    	this.code = compteur++;
         this.eau = eau;
         this.quantite = quantite;
     }
     
     //GETTERS
+    public int getCode() {
+		return this.code;
+	}
     
     public Eau getEau(){
         return eau;

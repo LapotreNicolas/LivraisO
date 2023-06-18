@@ -322,7 +322,7 @@ public class StocksEauController implements IController {
     				if (empty || (stock == null)) {
     					setText(null);
     				} else {
-    					setText("Numero stock d'eau : "+ stock.hashCode());
+    					setText("Numero stock d'eau : "+ stock.getCode());
     				}
     			}
     		};

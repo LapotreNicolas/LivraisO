@@ -30,7 +30,9 @@ public class StockEau{
 		StockEau other = (StockEau) obj;
 		return Objects.equals(eau, other.eau) && Objects.equals(entrepot, other.entrepot) && quantite == other.quantite;
 	}
-
+	
+	private static int compteur = 0;
+    private int code;
 	private Eau eau;
     private Entrepot entrepot;
     private int quantite;
@@ -38,12 +40,16 @@ public class StockEau{
     //CONSTRUCTEURS
     
     public StockEau(Eau eau, Entrepot entrepot, int quantite){
+    	this.code = compteur++;
         this.eau = eau;
         this.entrepot = entrepot;
         this.quantite = quantite;
     }
 
     //GETTERS
+    public int getCode() {
+		return this.code;
+	}
     
     public Eau getEau(){return this.eau;}
 
