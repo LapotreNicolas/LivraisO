@@ -17,6 +17,7 @@ public class EntrepriseVenteEau {
     private ObservableList<Commande> commandes; // pour les vues
     private double disponibilites;
     private boolean endette;
+    private IController controller;
     
     @Override
 	public int hashCode() {
@@ -70,11 +71,28 @@ public class EntrepriseVenteEau {
     public boolean getEndette() {
     	return endette;
     }
+    
+    public StockGlobal getStockGlobal() {
+    	return this.stockGlobal;
+    }
+    
+    public ObservableList<Client> getClients() {
+    	return this.clients;
+    }
+    
+    public ObservableList<Commande> getCommandes() {
+    	return this.commandes;
+    }
+    
     //SETTERS
 
     public void setNom(String nom) {
         this.nom = nom;
     }
+    
+    public void setController(IController controller) {
+		this.controller = controller;
+	}
 
     //Méthodes
 
@@ -104,7 +122,7 @@ public class EntrepriseVenteEau {
      */
     public void effectueVirement(double virement){
         this.disponibilites-=virement;
-        if(this.disponibilites < 0){
+        if (this.disponibilites < 0){
             this.endette = true;
         }
     }
@@ -114,7 +132,7 @@ public class EntrepriseVenteEau {
      */
     public void recoisVirement(double virement){
         disponibilites+=virement;
-        if(this.endette && disponibilites>=0){
+        if (this.endette && disponibilites>=0){
             this.endette = false;
         }
     }
@@ -169,7 +187,7 @@ public class EntrepriseVenteEau {
     	try {
     		this.stockGlobal.reduireQuantite(indice, quantite);
     	} catch (Exception e) {
-    		
+    		e.printStackTrace();
     	}
     }
     

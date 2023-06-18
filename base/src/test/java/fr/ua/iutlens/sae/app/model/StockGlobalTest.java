@@ -89,6 +89,7 @@ class StockGlobalTest {
     	sg.ajouter(se3);
     	sg.supprimer(se2);
     	sg.ajouter(se);
+    	sg.supprimer(se2);
     	ObservableList<StockEau> liste = sg.getTabStockEau();
     	
     	// Then

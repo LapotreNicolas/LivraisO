@@ -41,7 +41,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass = 'fr.ua.iutlens.sae.app.Test'
+    mainClass = 'fr.ua.iutlens.sae.app.EntrepriseVenteEauApplication'
 }
 
 tasks.named('test') {

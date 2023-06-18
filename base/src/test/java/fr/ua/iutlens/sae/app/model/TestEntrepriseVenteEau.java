@@ -111,16 +111,23 @@ class TestEntrepriseVenteEau {
 	@Test
 	void testStock() {
 		when(stockEau.getQuantite()).thenReturn(100);
+		when(stockEau3.getQuantite()).thenReturn(50);
 		
 		// When
 		entreprise.achatStock(stockEau);
 		entreprise.achatStock(stockEau2);
 		entreprise.achatStock(stockEau3);
 		int indice = entreprise.rechercherStock(stockEau);
+		int indice2 = entreprise.rechercherStock(stockEau3);
 		try {
 			entreprise.venteStock(indice, 50);
+			entreprise.venteStock(indice2, 70);
 		} catch (Exception e) {}
 		entreprise.supprimerStock(stockEau2);
+		
+		// Then
+		assertEquals(0, indice);
+		assertEquals(2, indice2);
 	}
 	
 	@Test
@@ -157,16 +164,16 @@ class TestEntrepriseVenteEau {
 		boolean endette2 = entreprise.getEndette();
 		entreprise.effectueVirement(123.45);
 		boolean endette3 = entreprise.getEndette();
-		entreprise.effectueVirement(420.69);
-		boolean endette4 = entreprise.getEndette();
 		entreprise.recoisVirement(666.13);
+		boolean endette4 = entreprise.getEndette();
+		entreprise.effectueVirement(420.69);
 		boolean endette5 = entreprise.getEndette();
 		
 		// Then
 		assertFalse(endette);
 		assertFalse(endette2);
 		assertTrue(endette3);
-		assertTrue(endette4);
+		assertFalse(endette4);
 		assertFalse(endette5);
 	}
 	

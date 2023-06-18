@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane dividerPositions="0.25" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="200.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ua.iutlens.sae.app.controller.AccueilController">
+  <items>
+    <AnchorPane fx:id="nom" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+         <children>
+            <Label fx:id="labelTitre" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="9.0" prefHeight="30.0" prefWidth="600.0" text="Choisissez ce que vous voulez visualiser sur la société : ">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="230.0" prefWidth="598.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="150.0" prefWidth="598.0" spacing="100.0">
+               <children>
+                  <MenuButton fx:id="menu" mnemonicParsing="false" prefHeight="31.0" prefWidth="131.0" text="Sélectionner">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#menuStock" text="Stocks d'eau" />
+                      <MenuItem mnemonicParsing="false" onAction="#menuClients" text="Clients" />
+                        <MenuItem mnemonicParsing="false" onAction="#menuClommandes" text="Commandes" />
+                    </items>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </MenuButton>
+                  <Button mnemonicParsing="false" onAction="#visualiser" text="Visualiser">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children></AnchorPane>
+  </items>
+</SplitPane>
