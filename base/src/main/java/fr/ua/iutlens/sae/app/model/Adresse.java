@@ -151,6 +151,6 @@ public class Adresse {
      */
     @Override
     public String toString() {
-        return "num : " + num + ", voie : " + voie +" Commune :"+commune.insee+commune.nom+commune.nomDepartement;
+        return "num : " + num + ", voie : " + voie +" Commune : "+commune.nom + " Departement : "+commune.nomDepartement + " INSEE : " + commune.insee;
     }
 }

@@ -76,13 +76,8 @@ public abstract class Client{
      * @param achat le prix de l'achat
      */
     public abstract void ajoutPointsFidelite(double achat);
-<<<<<<< HEAD
     
-    /* Une méthode toString qui renvoie, sous forme de chaine de caractères l'ensemble des attributs de l'objet de la classe Client
-=======
-
     /** Une méthode toString qui renvoie, sous forme de chaine de caractères l'ensemble des attributs de l'objet de la classe Client
->>>>>>> main
      * @return l'ensemble des attributs de l'objet de la classe Client
      */
     @Override
